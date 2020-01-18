@@ -2,6 +2,10 @@
 <%@page import="usuarios.consultausuario"%>
 <%@page import="usuarios.usuarios"%>
 
+<script>
+
+</script>
+
 <div class="app-main__outer">
                     <div class="app-main__inner">
                         <div class="app-page-title">
@@ -39,6 +43,18 @@
                                                         </span>
                                                     </a>
                                                 </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link">
+                                                        <i class="nav-link-icon lnr-inbox"></i>
+                                                        <span class="btn-icon-wrapper pr-2 opacity-7">
+                                                            <i class="fas fa-plus-square fa-w-20"></i>
+                                                        </span>
+                                                         <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaldeleteusuario">
+                                                            Modal
+                                                          </button></center>
+                    
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -46,12 +62,23 @@
                             </div>
                         </div>            
                         <!-- INICIO CONTENIDO -->
+                            <div hidden> 
+                                <div class="col">
+                                 <input type="text" name="idedit" id="idedit">
+                                 <input type="text" name="nombreedit" id="nombreedit">   
+                                 <input type="text" name="rutedit" id="rutedit">   
+                                 <input type="text" name="emailedit" id="emailedit">   
+                                 <input type="text" name="contraedit" id="contraedit">   
+                                 <input type="text" name="cargoedit" id="cargoedit">   
+                                <button type="button" id="btnmodaldelete" class="btn btn-primary btnmodaldelete" data-toggle="modal" data-target="#modaldeleteusuario"> Modal </button>
+                                </div>  
+                            </div>
                         
                             <div class="col-lg-12">
                                 <div class="main-card mb-3 card">
                                     <div class="card-body"><h5 class="card-title">Listado de Usuarios</h5>
                                         <div class="  table-responsive">
-                                            <table class="table table-bordered table-hover" >
+                                            <table class="table table-bordered  table-striped table-hover" >
                                                 <thead>
                                                 <tr>
                                                     <th>#</th>
@@ -71,24 +98,26 @@
                                                     {   
 
                                                         out.println("<tr>");
-                                                        out.println("<td scope=\"row\"><span id=\"Id_reserva"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getId_usuario()+"</span></td>");
-                                                        out.println("<td scope=\"row\"><span id=\"fecha_ingreso"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getNombre_usuario()+"</span></td>");
-                                                        out.println("<td><span id=\"numero_reserva_interno"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getRut_usuario()+"</span></td>");
-                                                        out.println("<td><span id=\"nombre_mv"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getEmail_usuario()+"</span></td>");
-                                                        out.println("<td><span id=\"numero_reserva_mv"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getContra_usuario()+"</span></td>");
-                                                        out.println("<td><span id=\"configuracion_cabana"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getCargo_usuario()+"</span></td>");
+                                                        out.println("<td scope=\"row\"><span id=\"id_usuario"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getId_usuario()+"</span></td>");
+                                                        out.println("<td scope=\"row\"><span id=\"nombre_usuario"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getNombre_usuario()+"</span></td>");
+                                                        out.println("<td><span id=\"rut_usuario"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getRut_usuario()+"</span></td>");
+                                                        out.println("<td><span id=\"email_usuario"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getEmail_usuario()+"</span></td>");
+                                                        out.println("<td><span id=\"contra_usuario"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getContra_usuario()+"</span></td>");
+                                                        out.println("<td><span id=\"cargo_usuario"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getCargo_usuario()+"</span></td>");
                                                         out.println("<td>"
-                                                                         + "<div class=\"btn-group\" role=\"group\" aria-label=\"Basic example\">"
-                                                                         + "<button data-id="+listausuario.get(i).getId_usuario()+ " type=\"button\" class=\"btn btn-info sombra-acciones btn-sm fas fa-edit\"> Editar</button>"
-                                                                         + "<button data-id="+listausuario.get(i).getId_usuario()+ " type=\"button\" class=\"btn btn-danger sombra-acciones btn-sm fas fa-trash\"> Eliminar</button>"
-                                                                         + "</div>"
-                                                                         + ""
-                                                                   +"</td>");
+                                                        + "<div class=\"btn-group\" role=\"group\" aria-label=\"Basic example\">"
+                                                        + "<button  data-id="+listausuario.get(i).getId_usuario()+ " type=\"button\" class=\"btn btn-info sombra-acciones btn-sm fas fa-edit editbtn\"> Editar</button>"
+                                                        + "<button data-id="+listausuario.get(i).getId_usuario()+ " type=\"button\"  class=\"btn btn-danger sombra-acciones btn-sm fas fa-trash delbtn\" data-toggle=\"modal\" >Eliminar</button>"
+                                                        + "</div>"
+                                                        + ""
+                                                        +"</td>");
                                                         out.println("</tr>");
 
 
                                                     }
                                                     %>
+                                                    
+                                                
                                                     
                                                 </tbody>
                                             </table>
@@ -100,4 +129,129 @@
                         <!-- FIN CONTENIDO -->    
 
                     </div>
-</div>
+</div>        
+                                     
+                                                    
+                                    <%
+                                       if(session.getAttribute("mensajeRetorno")!=null) {
+                                       //if ( session.getAttribute("mensajeRetorno").equals("Registrado")){
+                                           String msg = (String)session.getAttribute("mensajeRetorno");
+                                        
+                                           if(msg.equals("Error")){
+                                       %>
+                                       
+                                       <script>
+                                           
+                                            Swal.fire({
+                                              position: 'top-end',
+                                              icon: 'error',
+                                              title: 'Error!',
+                                              text: 'Existe un error - Contacte al desarrollador.' ,
+                                              showConfirmButton: false,
+                                              timer: 3000,
+                                              timerProgressBar: true,
+                                              onOpen: (toast) => {
+                                              toast.addEventListener('mouseenter', Swal.stopTimer)
+                                              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                            }
+                                            })
+                                        
+                                        </script> 
+                                       
+                                        <%    
+                                            }
+                                       if(msg.equals("Existente")){
+
+                                         %>
+                                       
+                                        <script>
+                                           
+                                            Swal.fire({
+                                              position: 'top-end',
+                                              icon: 'error',
+                                              title: 'Usuario Existente!',
+                                              text: 'Rut del usuario ya existe en el sistema.' ,
+                                              showConfirmButton: false,
+                                              timer: 3000,
+                                              timerProgressBar: true,
+                                              onOpen: (toast) => {
+                                              toast.addEventListener('mouseenter', Swal.stopTimer)
+                                              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                            }
+                                            })
+                                        
+                                        </script> 
+                                           
+                                            <%
+                                        }
+                                        if(msg.equals("Registrado")){
+
+                                         %>
+                                       
+                                         <script>
+                                            Swal.fire({
+                                              position: 'top-end',
+                                              icon: 'success',
+                                              title: 'Usuario Registrado!',
+                                              text: 'Usuario registrado exitosamente.' ,
+                                              showConfirmButton: false,
+                                              timer: 3000,
+                                              timerProgressBar: true,
+                                              onOpen: (toast) => {
+                                              toast.addEventListener('mouseenter', Swal.stopTimer)
+                                              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                            }
+                                            })
+                                        </script>
+                                           
+                                            <%
+                                        }
+                                        if(msg.equals("Eliminado")){
+
+                                         %>
+                                       
+                                         <script>
+                                            Swal.fire({
+                                              position: 'top-end',
+                                              icon: 'success',
+                                              title: 'Usuario Eliminado!',
+                                              text: 'Usuario eliminado exitosamente.' ,
+                                              showConfirmButton: false,
+                                              timer: 3000,
+                                              timerProgressBar: true,
+                                              onOpen: (toast) => {
+                                              toast.addEventListener('mouseenter', Swal.stopTimer)
+                                              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                            }
+                                            })
+                                        </script>
+                                           
+                                            <%
+                                        }
+                                         if(msg.equals("Editado")){
+
+                                         %>
+                                       
+                                         <script>
+                                            Swal.fire({
+                                              position: 'top-end',
+                                              icon: 'success',
+                                              title: 'Usuario Eliminado!',
+                                              text: 'Usuario eliminado exitosamente.' ,
+                                              showConfirmButton: false,
+                                              timer: 3000,
+                                              timerProgressBar: true,
+                                              onOpen: (toast) => {
+                                              toast.addEventListener('mouseenter', Swal.stopTimer)
+                                              toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                            }
+                                            })
+                                        </script>
+                                           
+                                            <%
+                                        }    
+                                        msg.equals(null);      
+                                        session.setAttribute("mensajeRetorno",null);
+                                        }
+                                          %>
+  

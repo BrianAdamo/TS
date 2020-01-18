@@ -8,14 +8,16 @@
     <title>Transporte Solis S.A</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="msapplication-tap-highlight" content="no">
+   
     <!-- ESTILOS -->
-    <link href="./main.css" rel="stylesheet">
-    <link href="css/miscss.css" rel="stylesheet">
-    <!-- DATATABLE -->
-    <link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
     
+    <link href="./main.css" rel="stylesheet">
+    <link href="css/sw2css.css" rel="stylesheet">
+    <link href="css/miscss.css" rel="stylesheet">
+    <script type="text/javascript" src="js/sw2js.js"></script>
 </head>
 <body>
+    <form method="POST" name="formulario" id="formulario" class="needs-validation" novalidate> 
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
@@ -53,7 +55,7 @@
                     
                     <ul class="header-menu nav">
                         <li class="nav-item">
-                            <a href="javascript:void(0);" class="nav-link">
+                            <a onclick="mensaje();" class="nav-link">
                                 <i class="nav-link-icon fa fa-home"> </i>
                                 Inicio
                             </a>
@@ -217,7 +219,11 @@
                     </div>
                 </div>
             <!-- INICIO DE CONTENIDO DEL CONTENEDOR-->
-                                     <%
+                                
+                                    
+                                  
+                                   
+                                    <%    
                                         //Variables generales ( Despues de Login)
                                         String variableprivada = request.getParameter("vp");
                                         if (variableprivada != null){
@@ -228,24 +234,39 @@
                                         <%@ include file="vistas/usuarios/usuarios.jsp" %>
                                      <%
                                          break;
-                                          case "addusuarios":
+                                         case "addusuarios":
                                     %>
                                          <%@ include file="vistas/usuarios/addusuarios.jsp" %>
+                                     <%
+                                         break;
+                                         case "editusuarios":
+                                    %>
+                                         <%@ include file="vistas/usuarios/editusuarios.jsp" %>
                                      <%
                                          break;  
                                              
                                         }
                                     }
-                                    %> 
+                                    %>
+                                
+                                 
             <!-- FIN DE CONTENIDO DEL CONTENEDOR-->        
         </div>    
-        
-            
-        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        
     </div>
-<!-- DATATABLE--> 
 
-<script type="text/javascript" src="./assets/scripts/main.js"></script>
+<!-- Modales --> 
+ <%@ include file="vistas/modales.jsp" %>
+<!-- Modales -->
+ </form>  
+
+    <!-- Boostrap,jquery y poppers -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <!-- sweetalert -->
+    
+    <!-- MIS JS -->
+    <script type="text/javascript" src="./assets/scripts/main.js"></script>
+    <script type="text/javascript" src="js/misjs.js"></script>
+    
 </body>
 </html>

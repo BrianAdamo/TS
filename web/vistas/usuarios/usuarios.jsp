@@ -43,18 +43,6 @@
                                                         </span>
                                                     </a>
                                                 </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link">
-                                                        <i class="nav-link-icon lnr-inbox"></i>
-                                                        <span class="btn-icon-wrapper pr-2 opacity-7">
-                                                            <i class="fas fa-plus-square fa-w-20"></i>
-                                                        </span>
-                                                         <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaldeleteusuario">
-                                                            Modal
-                                                          </button></center>
-                    
-                                                    </a>
-                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -69,9 +57,13 @@
                                  <input type="text" name="rutedit" id="rutedit">   
                                  <input type="text" name="emailedit" id="emailedit">   
                                  <input type="text" name="contraedit" id="contraedit">   
-                                 <input type="text" name="cargoedit" id="cargoedit">   
-                                <button type="button" id="btnmodaldelete" class="btn btn-primary btnmodaldelete" data-toggle="modal" data-target="#modaldeleteusuario"> Modal </button>
-                                </div>  
+                                 <select name="cargoedit" id="cargoedit">
+                                     <option>Admin</option>
+                                     <option>Usuario</option>
+                                 </select>
+                                 <button type="button" id="btnmodaldelete" class="btn btn-primary btnmodaldelete" data-toggle="modal" data-target="#modaldeleteusuario"> Modal </button>
+                                
+                                 </div>  
                             </div>
                         
                             <div class="col-lg-12">
@@ -236,8 +228,8 @@
                                             Swal.fire({
                                               position: 'top-end',
                                               icon: 'success',
-                                              title: 'Usuario Eliminado!',
-                                              text: 'Usuario eliminado exitosamente.' ,
+                                              title: 'Usuario Editado!',
+                                              text: 'Usuario editado exitosamente.' ,
                                               showConfirmButton: false,
                                               timer: 3000,
                                               timerProgressBar: true,

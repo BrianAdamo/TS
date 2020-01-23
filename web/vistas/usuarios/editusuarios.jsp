@@ -5,9 +5,6 @@
    String email= request.getParameter("emailedit");
    String contra= request.getParameter("contraedit");
    String cargo= request.getParameter("cargoedit");
-   
-   String nombreval = "Sin Cambios";
-
 %>
 
 
@@ -42,43 +39,56 @@
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom01">Id:</label>
                                             <input type="text" class="form-control" id="input_id_edit" name="input_id_edit" placeholder="Id Usuario" value="<%=id%>" readonly>
-                                            <div class="valid-feedback">
-                                                Looks good!
+                                            <div class="invalid-feedback">
+                                                ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom01">Nombre:</label> <a id="ValNombreEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
-                                            <input type="text" class="form-control" id="input_nombre_edit" name="input_nombre_edit" placeholder="Nombre Usuario" value="<%=nombre%>" required>
-                                            <div class="valid-feedback">
-                                                Looks good!
+                                            <input type="text" class="form-control" id="input_nombre_edit" name="input_nombre_edit" placeholder="Nombre Usuario" value="<%=nombre%>" required maxlength="20">
+                                            <div class="invalid-feedback">
+                                                ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom02">Rut: </label> <a id="ValRutEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
-                                            <input type="text" class="form-control" id="input_rut_edit" name="input_rut_edit" placeholder="Rut Usuario" value="<%=rut%>" required>
-                                            <div class="valid-feedback">
-                                                Looks good!
+                                            <input type="text" class="form-control" id="input_rut_edit" name="input_rut_edit" placeholder="Rut Usuario" value="<%=rut%>" required maxlength="15">
+                                            <div class="invalid-feedback">
+                                                ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom02">Email: </label> <a id="ValEmailEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
-                                            <input type="text" class="form-control" id="input_email_edit" name="input_email_edit" placeholder="Email Usuario"  value="<%=email%>" required>
-                                            <div class="valid-feedback">
-                                                Looks good!
+                                            <input type="text" class="form-control" id="input_email_edit" name="input_email_edit" placeholder="Email Usuario"  value="<%=email%>" required maxlength="50">
+                                            <div class="invalid-feedback">
+                                                ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom01">Contraseña:</label> <a id="ValContraEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
-                                            <input type="text" class="form-control" id="input_contra_edit" name="input_contra_edit" placeholder="Contraseña Usuario" value="<%=contra%>" required>
-                                            <div class="valid-feedback">
-                                                Looks good!
+                                            <input type="text" class="form-control" id="input_contra_edit" name="input_contra_edit" placeholder="Contraseña Usuario" value="<%=contra%>" required maxlength="8">
+                                            <div class="invalid-feedback">
+                                                ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom02">Cargo: </label> <a id="ValCargoEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
-                                            <input type="text" class="form-control" id="input_cargo_edit" name="input_cargo_edit" placeholder="Cargo Usuario" value="<%=cargo%>" required>
-                                            <div class="valid-feedback">
-                                                Looks good!
+                                            <select type="text" class="form-control" id="input_cargo_edit" name="input_cargo_edit">
+                                                <option Value="<%=cargo%>"selected disabled><%=cargo%></option>
+                                                <% 
+                                                if (cargo.equals("Admin")){
+                                                %>
+                                                <option value="Usuario">Usuario</option>
+                                                <% 
+                                                }else{
+                                                %>
+                                                <option value="Admin">Admin</option>
+                                                <% 
+                                                }
+                                                %>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                ¡Campo Vacio!
                                             </div>
                                         </div>
                                     </div>

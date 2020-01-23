@@ -29,37 +29,42 @@
                                     <div class="form-row">
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom01">Nombre:</label>
-                                            <input type="text" class="form-control" id="input_nombre_add" name="input_nombre_add" placeholder="Nombre Usuario" required>
-                                            <div class="valid-feedback">
-                                                Looks good!
+                                            <input type="text" class="form-control" id="input_nombre_add" name="input_nombre_add" placeholder="Nombre Usuario" required maxlength="20">
+                                            <div class="invalid-feedback">
+                                                ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom02">Rut: </label>
-                                            <input type="text" class="form-control" id="input_rut_add" name="input_rut_add" placeholder="Rut Usuario"  required>
-                                            <div class="valid-feedback">
-                                                Looks good!
+                                            <input type="text" class="form-control" id="input_rut_add" name="input_rut_add" placeholder="Rut Usuario"  required maxlength="15">
+                                            <div class="invalid-feedback">
+                                                ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom02">Email: </label>
-                                            <input type="text" class="form-control" id="input_email_add" name="input_email_add" placeholder="Email Usuario"  required>
-                                            <div class="valid-feedback">
-                                                Looks good!
+                                            <input type="text" class="form-control" id="input_email_add" name="input_email_add" placeholder="Email Usuario"  required maxlength="50">
+                                            <div class="invalid-feedback">
+                                                ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom01">Contraseña:</label>
-                                            <input type="text" class="form-control" id="input_contra_add" name="input_contra_add" placeholder="Contraseña Usuario" required>
-                                            <div class="valid-feedback">
-                                                Looks good!
+                                            <input type="text" class="form-control" id="input_contra_add" name="input_contra_add" placeholder="Contraseña Usuario" required maxlength="8">
+                                            <div class="invalid-feedback">
+                                                ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom02">Cargo: </label>
-                                            <input type="text" class="form-control" id="input_cargo_add" name="input_cargo_add" placeholder="Cargo Usuario"  required>
-                                            <div class="valid-feedback">
-                                                Looks good!
+                                            <!--<input type="text" class="form-control" id="input_cargo_add" name="input_cargo_add" placeholder="Cargo Usuario"  required maxlength="20">-->
+                                            <select type="text" class="form-control" id="input_cargo_add" name="input_cargo_add"   required maxlength="20" >
+                                                <option selected disabled>Cargo Usuario</option>
+                                                <option>Admin</option>
+                                                <option>Usuario</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                ¡Campo Vacio!
                                             </div>
                                         </div>
                                         

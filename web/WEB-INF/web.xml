@@ -12,6 +12,14 @@
         <servlet-name>NewServletPrueba</servlet-name>
         <servlet-class>config.NewServletPrueba</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletUsuariosEdit</servlet-name>
+        <servlet-class>usuarios.ServletUsuariosEdit</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletLogin</servlet-name>
+        <servlet-class>login.ServletLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletUsuariosAdd</servlet-name>
         <url-pattern>/ServletUsuariosAdd</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>NewServletPrueba</servlet-name>
         <url-pattern>/NewServletPrueba</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletUsuariosEdit</servlet-name>
+        <url-pattern>/ServletUsuariosEdit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletLogin</servlet-name>
+        <url-pattern>/ServletLogin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

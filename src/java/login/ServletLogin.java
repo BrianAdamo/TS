@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package usuarios;
+package login;
 
 import config.conexion;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Brian
  */
-public class ServletUsuariosAdd extends HttpServlet {
+public class ServletLogin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,50 +37,44 @@ public class ServletUsuariosAdd extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             
-            //String estado=request.getParameter("EstadoCategoriaGuardar");
-                String nombre= request.getParameter("input_nombre_add");
-                String rut= request.getParameter("input_rut_add");
-                String email= request.getParameter("input_email_add");
-                String contra= request.getParameter("input_contra_add");
-                String cargo= request.getParameter("input_cargo_add");
-                
-                //int estado = Integer.parseInt(request.getParameter("EstadoSubcategoriaGuardar"));
-                
-                // Define la conexión
+            String rut= request.getParameter("loginrut");
+            String contra= request.getParameter("logincontra");
+            
+             // Define la conexión
                 Connection cn = conexion.getConnection(); 
                 // Llamada al procedimiento almacenado
-                CallableStatement cst = cn.prepareCall("{Call AddUsuario (?,?,?,?,?,?)}");
+                CallableStatement cst = cn.prepareCall("{Call Login (?,?,?,?,?)}");
                 // Parametro 1 del procedimiento almacenado
-                cst.setString(1, nombre);
+                cst.setString(1, rut);
                 // Parametro 2 del procedimiento almacenado
-                cst.setString(2, rut);
-                // Parametro 3 del procedimiento almacenado
-                cst.setString(3, email);
+                cst.setString(2, contra);
                 
-                cst.setString(4, contra);
-                
-                cst.setString(5, cargo);
-//                out.println("<h1>Nombre Categoria:" + nombre+ "</h1>");
-//                out.println("<h1>Nombre Categoria:" + descripcion+ "</h1>");
-//                out.println("<h1>Nombre Categoria:" + estado+ "</h1>");
-                // Definimos los tipos de los parametros de salida del procedimiento almacenado
-                cst.registerOutParameter(6, java.sql.Types.VARCHAR);
+                // Logeo
+                cst.registerOutParameter(3, java.sql.Types.VARCHAR);
+                // Usuario
+                cst.registerOutParameter(4, java.sql.Types.VARCHAR);
+                // Cargo
+                cst.registerOutParameter(5, java.sql.Types.VARCHAR);
                
                
                 // Ejecuta el procedimiento almacenado
                 cst.execute();
                 
                 // Se obtienen la salida del procedimineto almacenado
-                String mensajeRetorno = cst.getString(6);
+                String mensajeRetornoLogeo = cst.getString(3);
+                String mensajeRetornoUsuario = cst.getString(4);
+                String mensajeRetornoCargo = cst.getString(5);
                 
                 //seteo valor parametro obtenido del procedure
-                request.getSession().setAttribute("mensajeRetorno",mensajeRetorno);
+                request.getSession().setAttribute("mensajeRetornoLogeo",mensajeRetornoLogeo);
+                request.getSession().setAttribute("mensajeRetornoUsuario",mensajeRetornoUsuario);
+                request.getSession().setAttribute("mensajeRetornoCargo",mensajeRetornoCargo);
                 
-                RequestDispatcher rd = request.getRequestDispatcher("index.jsp?vp=usuarios");
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp?");
         
                 rd.forward(request, response);
-            
         }
     }
 
@@ -99,7 +93,7 @@ public class ServletUsuariosAdd extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletUsuariosAdd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -117,7 +111,7 @@ public class ServletUsuariosAdd extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletUsuariosAdd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

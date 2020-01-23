@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Brian
  */
-public class ServletUsuariosAdd extends HttpServlet {
+public class ServletUsuariosEdit extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,19 +38,17 @@ public class ServletUsuariosAdd extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            //String estado=request.getParameter("EstadoCategoriaGuardar");
-                String nombre= request.getParameter("input_nombre_add");
-                String rut= request.getParameter("input_rut_add");
-                String email= request.getParameter("input_email_add");
-                String contra= request.getParameter("input_contra_add");
-                String cargo= request.getParameter("input_cargo_add");
-                
-                //int estado = Integer.parseInt(request.getParameter("EstadoSubcategoriaGuardar"));
+                int id = Integer.parseInt(request.getParameter("input_id_edit"));
+                String nombre= request.getParameter("input_nombre_edit");
+                String rut= request.getParameter("input_rut_edit");
+                String email= request.getParameter("input_email_edit");
+                String contra= request.getParameter("input_contra_edit");
+                String cargo= request.getParameter("input_cargo_edit");
                 
                 // Define la conexión
                 Connection cn = conexion.getConnection(); 
                 // Llamada al procedimiento almacenado
-                CallableStatement cst = cn.prepareCall("{Call AddUsuario (?,?,?,?,?,?)}");
+                CallableStatement cst = cn.prepareCall("{Call EditUsuario (?,?,?,?,?,?,?)}");
                 // Parametro 1 del procedimiento almacenado
                 cst.setString(1, nombre);
                 // Parametro 2 del procedimiento almacenado
@@ -61,18 +59,17 @@ public class ServletUsuariosAdd extends HttpServlet {
                 cst.setString(4, contra);
                 
                 cst.setString(5, cargo);
-//                out.println("<h1>Nombre Categoria:" + nombre+ "</h1>");
-//                out.println("<h1>Nombre Categoria:" + descripcion+ "</h1>");
-//                out.println("<h1>Nombre Categoria:" + estado+ "</h1>");
-                // Definimos los tipos de los parametros de salida del procedimiento almacenado
-                cst.registerOutParameter(6, java.sql.Types.VARCHAR);
+                
+                cst.setInt(6, id);
+
+                cst.registerOutParameter(7, java.sql.Types.VARCHAR);
                
                
                 // Ejecuta el procedimiento almacenado
                 cst.execute();
                 
                 // Se obtienen la salida del procedimineto almacenado
-                String mensajeRetorno = cst.getString(6);
+                String mensajeRetorno = cst.getString(7);
                 
                 //seteo valor parametro obtenido del procedure
                 request.getSession().setAttribute("mensajeRetorno",mensajeRetorno);
@@ -80,7 +77,7 @@ public class ServletUsuariosAdd extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("index.jsp?vp=usuarios");
         
                 rd.forward(request, response);
-            
+                
         }
     }
 
@@ -99,7 +96,7 @@ public class ServletUsuariosAdd extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletUsuariosAdd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletUsuariosEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -117,7 +114,7 @@ public class ServletUsuariosAdd extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletUsuariosAdd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletUsuariosEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

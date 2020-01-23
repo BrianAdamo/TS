@@ -72,45 +72,149 @@
                                 Contacto
                             </a>
                         </li>
-                    </ul>        </div>
-                <div class="app-header-right">
-                    <div class="header-btn-lg pr-0">
-                        <div class="widget-content p-0">
-                            <div class="widget-content-wrapper">
-                                <div class="widget-content-left">
-                                    <div class="btn-group">
-                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                            <img width="42" class="rounded-circle" src="assets/images/avatars/1.jpg" alt="">
-                                            <i class="fa fa-angle-down ml-2 opacity-8"></i>
-                                        </a>
-                                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                            <h6 tabindex="-1" class="dropdown-header">Administrar</h6>
-                                            <button type="button" tabindex="0" class="dropdown-item">Cuenta Usuario</button>
-                                            <button type="button" tabindex="0" class="dropdown-item">Configuracion</button>
-                                            <button type="button" tabindex="0" class="dropdown-item">Acciones</button>
-                                            <div tabindex="-1" class="dropdown-divider"></div>
-                                            <button type="button" tabindex="0" class="dropdown-item"> 
-                                                <i class="metismenu-state-icon pe-7s-angle-right-circle" style="color: red"></i>
-                                                Salir
-                                            </button>
+                        <li class="dropdown nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                <i class="nav-link-icon fa fa-phone"></i>
+                                Contacto
+                            </a>
+                        </li>
+                        
+                    </ul>        
+                </div>
+                <%
+                                       String msglogeo="";
+                                       String msgusuario="";
+                                       String msgcargo="";
+                                       if(session.getAttribute("mensajeRetornoLogeo")!=null) {
+                                       
+                                       msglogeo = (String)session.getAttribute("mensajeRetornoLogeo");
+
+                                       if(msglogeo.equals("Logeado")){
+                                           msgusuario = (String)session.getAttribute("mensajeRetornoUsuario");
+                                           msgcargo = (String)session.getAttribute("mensajeRetornoCargo");
+                                           
+                                                String divlogout = request.getParameter("divlogout");
+                                                if (divlogout != null){
+                                                switch(divlogout){     
+
+                                                case "salir": 
+                                                    msglogeo.equals(null);      
+                                                    session.setAttribute("mensajeRetornoLogeo",null);
+                                                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp?vg=login");
+                                                    rd.forward(request, response);
+                                                }
+                                                }
+                                           
+ %>
+                            <div class="app-header-right">
+                                <div class="header-btn-lg pr-0">
+                                    <div class="widget-content p-0">
+                                        <div class="widget-content-wrapper">
+                                            <div class="widget-content-left">
+                                                <div class="btn-group">
+                                                    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                                        <img width="42" class="rounded-circle" src="assets/images/avatars/1.jpg" alt="">
+                                                        <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                                    </a>
+                                                    <div class="widget-content-left  ml-3 header-user-info">
+                                                        <div class="widget-heading">
+                                                            <%=msgusuario%>
+                                                        </div>
+                                                        <div style="color: #123f28" class="widget-subheading">
+                                                            <font size="" face=""><%=msgcargo%></font>
+                                                        </div>
+                                                    </div>
+                                                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                                        <h6 tabindex="-1" class="dropdown-header">Administrar</h6>
+                                                        <button type="button" tabindex="0" class="dropdown-item">Cuenta Usuario</button>
+                                                        <button type="button" tabindex="0" class="dropdown-item">Configuracion</button>
+                                                        <button type="button" tabindex="0" class="dropdown-item">Acciones</button>
+                                                        <div tabindex="-1" class="dropdown-divider"></div>
+                                                        <button type="button" tabindex="0" class="dropdown-item"  > 
+                                                        <a href="index.jsp?divlogout=salir">
+                                                            <i style="color: #ff0844" class="metismenu-icon pe-7s-angle-right-circle"> Salir</i>
+                                                            
+                                                        </a>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="widget-content-left  ml-3 header-user-info">
-                                    <div class="widget-heading">
-                                        Brian Adamo
-                                    </div>
-                                    <div class="widget-subheading">
-                                        Dev Manager
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>       
+                                </div>       
+                            </div>                                       
+                    <%   
+                                                
+                                            }    
+                                        else{
+                                            %>
+                                            
+                                            <div class="app-header-right">
+                                                <div class="header-btn-lg pr-0">
+                                                    <div class="widget-content p-0">
+                                                        <div class="widget-content-wrapper">
+                                                            <div class="widget-content-left  ml-3 header-user-info">
+                                                                <div class="widget-heading">
+                                                                    <a href="index.jsp?vg=login" style=" color:#28A745"><span class="fas fa-sign-in-alt "></span> Login</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>       
+                                            </div>
+                                            
+                                            <%
+                                        }
+                                        
+                                        if(msglogeo.equals("No Logeado")){
+                                       %>
+                                            
+                                       <script>
+                                           Swal.fire({
+                                            position: 'top-end',
+                                            icon: 'error',
+                                            title: 'Usuario no encontrado',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                          })
+                                       </script>
+                                            
+                                            <%    
+                                            }
+
+                                        }
+                                        else{
+
+                                         %>
+                                        <div class="app-header-right">
+                                            <div class="header-btn-lg pr-0">
+                                                <div class="widget-content p-0">
+                                                    <div class="widget-content-wrapper">
+                                                        <div class="widget-content-left  ml-3 header-user-info">
+                                                            <div class="widget-heading">
+                                                                <a href="index.jsp?vg=login" style=" color:#28A745"><span class="fas fa-sign-in-alt "></span> Login</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>       
+                                        </div>
+                                        <%
+                                        }
+                                        
+                                        %>
+                  </div>
                 </div>
-            </div>
-        </div>
-        <div class="app-main col-md-12">
+              
+       
+            
+      
+                <% 
+                   if(msglogeo.equals("Logeado")){              
+               %>
+               <!-- Menu Izquierdo de Usuario Logeado -->
+               
+               <div class="app-main col-md-12">
                 <div class="app-sidebar sidebar-shadow">
                     <div class="app-header__logo">
                         <div class="logo-src"></div>
@@ -144,9 +248,17 @@
                     </div>    <div class="scrollbar-sidebar">
                         <div class="app-sidebar__inner">
                             <ul class="vertical-nav-menu">
-                                <center><li class="app-sidebar__heading">Menu</li></center>
+                                <center>
+                                    <li class="app-sidebar__heading">Menu</li></center>
+
+                        <% 
+                        //Segun el cargo o tipo de cuenta que posea el usuario le permitira  ver ciertos menus o no en este caso
+                        // no puede ver el menu MANTENEDORES si el usuario no es ADMINISTRADOR
+                        if(msgcargo.equals("Usuario")||msgcargo.equals("Admin")){               
+                        %>      
+                        
                                 <li>
-                                    <a href="index.jsp?vp=viajes">
+                                    <a href="index.jsp?divlogout=salir">
                                         <i class="metismenu-icon pe-7s-car"></i>
                                         Viajes
                                     </a>
@@ -175,6 +287,9 @@
                                         Sueldos
                                     </a>
                                 </li>
+                        <% 
+                        } if(msgcargo.equals("Admin")){           
+                        %>
                                 <li>
                                     <a href="#">
                                         <i class="metismenu-icon pe-7s-note2"></i>
@@ -214,20 +329,25 @@
                                         </li>
                                     </ul>
                                 </li>
-                            </ul>
+
+                        <% 
+                        }          
+                        %>
+                        </ul>
                         </div>
                     </div>
-                </div>
-            <!-- INICIO DE CONTENIDO DEL CONTENEDOR-->
-                                
-                                    
-                                  
-                                   
-                                    <%    
-                                        //Variables generales ( Despues de Login)
-                                        String variableprivada = request.getParameter("vp");
-                                        if (variableprivada != null){
-                                        switch(variableprivada){         
+                </div> 
+            
+        
+                 
+                
+                    <% 
+                        if(msglogeo.equals("Logeado")){
+                            if(msgcargo.equals("Admin")){  
+                                        //Variables Privadas ( Despues de Login)  ADMINISTRADOR  
+                                        String variableprivadaadmin = request.getParameter("vp");
+                                        if (variableprivadaadmin != null){
+                                        switch(variableprivadaadmin){         
 
                                         case "usuarios":
                                     %>
@@ -247,17 +367,54 @@
                                              
                                         }
                                     }
-                                    %>
-                                
-                                 
-            <!-- FIN DE CONTENIDO DEL CONTENEDOR-->        
-        </div>    
-    </div>
+                                    
+                                    //LUEGO DEL LOGIN PANTALLA DE INICIO MUESTRA ESTO 
+                                     %>
+                                         <%@ include file="vistas/usuarios/usuarios.jsp" %>
+                                     <%              
+                    }
+                    if(msgcargo.equals("Usuario")){  
+                        //Variables generales ( Despues de Login) Usuario
+                        String variableprivadasusuario = request.getParameter("vp");
+                        if (variableprivadasusuario != null){
+                        switch(variableprivadasusuario){     
 
-<!-- Modales --> 
- <%@ include file="vistas/modales.jsp" %>
-<!-- Modales -->
- </form>  
+                        case "login":
+                    %>
+                        <%@ include file="vistas/login.jsp" %>
+                    <%
+                        break;
+                    }
+                    }
+                    }
+                    %>
+                    </div>    
+                </div>
+                    
+                <!-- Modales --> 
+                <%@ include file="vistas/modales.jsp" %>
+                <!-- Modales -->
+                
+                <!--SI EL USUARIO NO ESTA LOGEADO SE MOSTRARA ESTO Completo Sin ASIDE ni ARTICLE-->    
+                    <% 
+                        
+                        }}
+                        else{ 
+                        //Variables generales Sin estar logeado
+                        String variablegeneral = request.getParameter("vg");
+                        if (variablegeneral != null){
+                        switch(variablegeneral){     
+
+                        case "login":
+                    %>
+                        <%@ include file="vistas/login.jsp" %>
+                    <%
+                        break;
+                    }
+                    }
+                    }
+            %> 
+    </form>
 
     <!-- Boostrap,jquery y poppers -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

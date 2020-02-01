@@ -1,10 +1,12 @@
 <%
-   int id= Integer.parseInt(request.getParameter("idedit"));
-   String nombre= request.getParameter("nombreedit");
-   String rut= request.getParameter("rutedit");
-   String email= request.getParameter("emailedit");
-   String contra= request.getParameter("contraedit");
-   String cargo= request.getParameter("cargoedit");
+   int idcli= Integer.parseInt(request.getParameter("idedit"));
+   String nombrecli= request.getParameter("nombreedit");
+   String rutcli= request.getParameter("rutedit");
+   String contactocli= request.getParameter("contactoedit");
+   String celularcli= request.getParameter("celularedit");
+   String correocli= request.getParameter("emailedit");
+   String diascli= request.getParameter("diasedit");
+   String estadocli= request.getParameter("estadoedit");
 %>
 
 
@@ -38,51 +40,65 @@
                                     <div class="form-row">
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom01">Id:</label>
-                                            <input type="text" class="form-control" id="input_id_edit" name="input_id_edit" placeholder="Id Usuario" value="<%=id%>" readonly>
+                                            <input type="text" class="form-control" id="input_id_edit" name="input_id_edit" placeholder="Id Cliente" value="<%=idcli%>" readonly>
                                             <div class="invalid-feedback">
                                                 ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="validationCustom01">Nombre:</label> <a id="ValNombreEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
-                                            <input type="text" class="form-control" id="input_nombre_edit" name="input_nombre_edit" placeholder="Nombre Usuario" value="<%=nombre%>" required maxlength="20">
+                                            <label for="validationCustom01">Nombre Cliente:</label> <a id="ValNombreEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
+                                            <input type="text" class="form-control" id="input_nombre_edit" name="input_nombre_edit" placeholder="Nombre Cliente" value="<%=nombrecli%>" required maxlength="50">
                                             <div class="invalid-feedback">
                                                 ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom02">Rut: </label> <a id="ValRutEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
-                                            <input type="text" class="form-control" id="input_rut_edit" name="input_rut_edit" placeholder="Rut Usuario" value="<%=rut%>" onchange="formateaRutUsuarioEdit(this.value)" required maxlength="15">
+                                            <input type="text" class="form-control" id="input_rut_edit" name="input_rut_edit" placeholder="Rut Cliente" value="<%=rutcli%>" onchange="formateaRutClienteEdit(this.value)" required maxlength="15">
                                             <div class="invalid-feedback">
                                                 ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="validationCustom02">Email: </label> <a id="ValEmailEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
-                                            <input type="text" class="form-control" id="input_email_edit" name="input_email_edit" placeholder="Email Usuario"  value="<%=email%>" required maxlength="50">
+                                            <label for="validationCustom02">Nombre de contacto: </label> <a id="ValContactoEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
+                                            <input type="text" class="form-control" id="input_contacto_edit" name="input_contacto_edit" placeholder="Nombre Contacto"  value="<%=contactocli%>" maxlength="100">
                                             <div class="invalid-feedback">
                                                 ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="validationCustom01">Contraseña:</label> <a id="ValContraEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
-                                            <input type="text" class="form-control" id="input_contra_edit" name="input_contra_edit" placeholder="Contraseña Usuario" value="<%=contra%>" required maxlength="8">
+                                            <label for="validationCustom02">Celular contacto: </label> <a id="ValCelularEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
+                                            <input type="text" class="form-control" id="input_celular_edit" name="input_celular_edit" placeholder="Celular Contacto"  value="<%=celularcli%>" maxlength="50">
+                                            <div class="invalid-feedback">
+                                                ¡Campo Vacio!
+                                            </div>
+                                        </div>
+                                            <div class="col-md-4 mb-3">
+                                            <label for="validationCustom02">Correo de contacto: </label> <a id="ValCorreoEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
+                                            <input type="text" class="form-control" id="input_correo_edit" name="input_correo_edit" placeholder="Correo Contacto"  value="<%=correocli%>" maxlength="100">
                                             <div class="invalid-feedback">
                                                 ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="validationCustom02">Cargo: </label> <a id="ValCargoEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
-                                            <select type="text" class="form-control" id="input_cargo_edit" name="input_cargo_edit">
-                                                <option Value="<%=cargo%>"selected><%=cargo%></option>
+                                            <label for="validationCustom01">Dias de pago:</label> <a id="ValDiasEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
+                                            <input type="text" class="form-control" id="input_dias_edit" name="input_dias_edit" placeholder="Dias de pago" value="<%=diascli%>" maxlength="5">
+                                            <div class="invalid-feedback">
+                                                ¡Campo Vacio!
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="validationCustom02">Estado: </label> <a id="ValEstadoEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
+                                            <select type="text" class="form-control" id="input_estado_edit" name="input_estado_edit">
+                                                <option Value="<%=estadocli%>"selected><%=estadocli%></option>
                                                 <% 
-                                                if (cargo.equals("Admin")){
+                                                if (estadocli.equals("Activo")){
                                                 %>
-                                                <option value="Usuario">Usuario</option>
+                                                <option value="Desactivado">Desactivado</option>
                                                 <% 
                                                 }else{
                                                 %>
-                                                <option value="Admin">Admin</option>
+                                                <option value="Activo">Activo</option>
                                                 <% 
                                                 }
                                                 %>
@@ -95,7 +111,7 @@
                                    
                                     <div style="text-align: right" class="col-md-12">
                                     <button class="btn btn-warning sombra" type="submit" >Editar</button>
-                                    <button class="btn btn-danger sombra"  type="button"><a style="color: #fff" href="index.jsp?vp=usuarios">Cancelar</a></button>
+                                    <button class="btn btn-danger sombra"  type="button"><a style="color: #fff" href="index.jsp?vp=clientes">Cancelar</a></button>
                                     </div>
                                 </form> 
             
@@ -113,8 +129,27 @@
                                                         event.preventDefault();
                                                         event.stopPropagation();
                                                     }else{
-                                                        document.formulario.action='ServletUsuariosEdit';
-                                                        document.formulario.submit();
+                                                        
+                                                        var v_dias_cliente = $('#input_dias_edit').val();
+                                                        
+                                                        if(v_dias_cliente === ""){
+                                                            
+                                                                $('#input_dias_edit').val("1");
+                                                                
+                                                                var v_dias_cliente_mod = $('#input_dias_edit').val
+                                                                
+                                                                if(v_dias_cliente_mod === ""){
+                                                                    Alert("Error");
+                                                                }else{
+                                                                  document.formulario.action='ServletClienteEdit';
+                                                                  document.formulario.submit();  
+                                                                }
+                                                        }else{
+                                                          document.formulario.action='ServletClienteEdit';
+                                                          document.formulario.submit();  
+                                                        }
+                                                        
+                                                        
                                                     }
                                                     form.classList.add('was-validated');
                                                 }, false);
@@ -131,7 +166,7 @@
 </div>
                                             
 <script>
-function formateaRutUsuarioEdit(rut) {
+function formateaRutClienteEdit(rut) {
     
     var actual = rut.replace(/^0+/, "");
     

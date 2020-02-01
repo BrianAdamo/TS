@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package usuarios;
+package clientes;
 
 import config.conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -22,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Brian
  */
-public class ServletUsuariosAdd extends HttpServlet {
+public class ServletClienteDel extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,46 +39,30 @@ public class ServletUsuariosAdd extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-                //String estado=request.getParameter("EstadoCategoriaGuardar");
-                String nombre= request.getParameter("input_nombre_add");
-                String rut= request.getParameter("input_rut_add");
-                String email= request.getParameter("input_email_add");
-                String contra= request.getParameter("input_contra_add");
-                String cargo= request.getParameter("input_cargo_add");
-                
-                //int estado = Integer.parseInt(request.getParameter("EstadoSubcategoriaGuardar"));
-                
-                // Define la conexión
+            String nombre= request.getParameter("nombreclientemodal");
+            
+            int id= Integer.parseInt(request.getParameter("idclientemodal"));
+            
+            // Define la conexión
                 Connection cn = conexion.getConnection(); 
                 // Llamada al procedimiento almacenado
-                CallableStatement cst = cn.prepareCall("{Call AddUsuario (?,?,?,?,?,?)}");
+                CallableStatement cst = cn.prepareCall("{Call DelCliente (?,?)}");
                 // Parametro 1 del procedimiento almacenado
-                cst.setString(1, nombre);
-                // Parametro 2 del procedimiento almacenado
-                cst.setString(2, rut);
-                // Parametro 3 del procedimiento almacenado
-                cst.setString(3, email);
-                
-                cst.setString(4, contra);
-                
-                cst.setString(5, cargo);
-//                out.println("<h1>Nombre Categoria:" + nombre+ "</h1>");
-//                out.println("<h1>Nombre Categoria:" + descripcion+ "</h1>");
-//                out.println("<h1>Nombre Categoria:" + estado+ "</h1>");
+                cst.setInt(1, id);
                 // Definimos los tipos de los parametros de salida del procedimiento almacenado
-                cst.registerOutParameter(6, java.sql.Types.VARCHAR);
+                cst.registerOutParameter(2, java.sql.Types.VARCHAR);
                
                
                 // Ejecuta el procedimiento almacenado
                 cst.execute();
                 
                 // Se obtienen la salida del procedimineto almacenado
-                String mensajeRetorno = cst.getString(6);
+                String mensajeRetorno = cst.getString(2);
                 
                 //seteo valor parametro obtenido del procedure
                 request.getSession().setAttribute("mensajeRetorno",mensajeRetorno);
                 
-                RequestDispatcher rd = request.getRequestDispatcher("index.jsp?vp=usuarios");
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp?vp=clientes");
         
                 rd.forward(request, response);
             
@@ -99,7 +84,7 @@ public class ServletUsuariosAdd extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletUsuariosAdd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletClienteDel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -117,7 +102,7 @@ public class ServletUsuariosAdd extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletUsuariosAdd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletClienteDel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

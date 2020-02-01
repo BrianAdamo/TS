@@ -17,7 +17,7 @@ public class consultausuario {
             Connection con = conexion.getConnection();
             
             //Arma la consulta y la ejecuta
-            String Consulta = "select * From usuarios ";
+            String Consulta = "select * From usuarios  ";
             Statement stmtConsulta = con.createStatement();
             ResultSet rs = stmtConsulta.executeQuery(Consulta);
             

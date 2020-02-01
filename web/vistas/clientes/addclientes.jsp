@@ -8,8 +8,8 @@
                                         <i class="pe-7s-users icon-gradient bg-mean-fruit">
                                         </i>
                                     </div>
-                                    <div>Usuarios
-                                        <div class="page-title-subheading">Usuarios del sistema, "Emp" Empleado, "Admin" Administrador y "Test" Usuario de prueba para control de acceso y roles.
+                                    <div>Clientes
+                                        <div class="page-title-subheading">Registro de cliente.
                                         </div>
                                     </div>
                                 </div>
@@ -23,44 +23,58 @@
                         
                             <div class="main-card mb-3 card">
                             <div class="card-body">
-                                <h5 class="card-title">Añadir Usuario</h5>
+                                <h5 class="card-title">Añadir Cliente</h5>
                                 <form class="needs-validation" novalidate>
                                     <div class="form-row">
                                         <div class="col-md-4 mb-3">
-                                            <label for="validationCustom01">Nombre:</label>
-                                            <input type="text" class="form-control" id="input_nombre_add" name="input_nombre_add" placeholder="Nombre Usuario" required maxlength="20">
+                                            <label for="validationCustom01">Nombre Cliente:</label>
+                                            <input type="text" class="form-control" id="input_nombre_cliente_add" name="input_nombre_cliente_add" placeholder="Nombre Cliente" required maxlength="50">
                                             <div class="invalid-feedback">
                                                 ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="validationCustom02">Rut: </label>
-                                            <input type="text" class="form-control" id="input_rut_add" onchange="formateaRutUsuario(this.value)" name="input_rut_add" placeholder="Rut Usuario"  required maxlength="15" minlength="10">
+                                            <label for="validationCustom02">Rut Cliente: </label>
+                                            <input type="text" class="form-control" id="input_rut_cliente_add" onchange="formateaRutCliente(this.value)" name="input_rut_cliente_add" placeholder="Rut Cliente"  required maxlength="15">
                                             <div class="invalid-feedback">
                                                 ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="validationCustom02">Email: </label>
-                                            <input type="text" class="form-control" id="input_email_add" name="input_email_add" placeholder="Email Usuario"  required maxlength="50">
+                                            <label for="validationCustom02">Nombre Contacto: </label>
+                                            <input type="text" class="form-control" id="input_nombre_contacto_cliente_add" name="input_nombre_contacto_cliente_add" placeholder="Nombre Contacto"  required maxlength="100">
                                             <div class="invalid-feedback">
                                                 ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="validationCustom01">Contraseña:</label>
-                                            <input type="text" class="form-control" id="input_contra_add" name="input_contra_add" placeholder="Contraseña Usuario" required maxlength="8">
+                                            <label for="validationCustom01">Celular Contacto:: </label>
+                                            <input type="text" class="form-control" id="input_celular_contacto_cliente_add" name="input_celular_contacto_cliente_add" placeholder="Celular Contacto" required maxlength="50">
                                             <div class="invalid-feedback">
                                                 ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="validationCustom02">Cargo: </label>
+                                            <label for="validationCustom01">Correo Contacto: </label>
+                                            <input type="text" class="form-control" id="input_correo_contacto_cliente_add" name="input_correo_contacto_cliente_add" placeholder="Correo Contacto" required maxlength="100">
+                                            <div class="invalid-feedback">
+                                                ¡Campo Vacio!
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="validationCustom01">Dias de pagos: </label>
+                                            <input type="text" class="form-control" id="input_dias_pagos_cliente_add" name="input_dias_pagos_cliente_add" placeholder="Dias de Pago" required maxlength="5">
+                                            <div class="invalid-feedback">
+                                                ¡Campo Vacio!
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="validationCustom02">Estado Cliente: </label>
                                             <!--<input type="text" class="form-control" id="input_cargo_add" name="input_cargo_add" placeholder="Cargo Usuario"  required maxlength="20">-->
-                                            <select type="text" class="form-control" id="input_cargo_add" name="input_cargo_add"   required maxlength="20" >
-                                                <option selected disabled>Cargo Usuario</option>
-                                                <option>Admin</option>
-                                                <option>Usuario</option>
+                                            <select type="text" class="form-control" id="input_estado_cliente_add" name="input_estado_cliente_add"   required maxlength="15" >
+                                                <option selected disabled>Estado Cliente</option>
+                                                <option>Activo</option>
+                                                <option>Desactivado</option>
                                             </select>
                                             <div class="invalid-feedback">
                                                 ¡Campo Vacio!
@@ -71,7 +85,7 @@
                                    
                                     <div style="text-align: right" class="col-md-12">
                                     <button class="btn btn-success sombra" type="submit" >Agregar</button>
-                                    <button class="btn btn-danger sombra"  type="button"><a style="color: #fff" href="index.jsp?vp=usuarios">Cancelar</a></button>
+                                    <button class="btn btn-danger sombra"  type="button"><a style="color: #fff" href="index.jsp?vp=clientes">Cancelar</a></button>
                                     </div>
                                 </form> 
             
@@ -90,8 +104,27 @@
                                                         event.stopPropagation();
                                                     }else{
                                                         
-                                                        document.formulario.action='ServletUsuariosAdd';
-                                                        document.formulario.submit();
+                                                         var v_dias_cliente = $('#input_dias_pagos_cliente_add').val();
+                                                        
+                                                        if(v_dias_cliente === ""){
+                                                            
+                                                                $('#input_dias_pagos_cliente_add').val("1");
+                                                                
+                                                                var v_dias_cliente_mod = $('#input_dias_pagos_cliente_add').val
+                                                                
+                                                                if(v_dias_cliente_mod === ""){
+                                                                    Alert("Error");
+                                                                }else{
+                                                                  document.formulario.action='ServletClienteAdd';
+                                                                  document.formulario.submit();  
+                                                                }
+                                                        }else{
+                                                          document.formulario.action='ServletClienteAdd';
+                                                          document.formulario.submit();  
+                                                        }
+            
+            
+                                                        
                                                     }
                                                     form.classList.add('was-validated');
                                                 }, false);
@@ -108,7 +141,7 @@
 </div>
 
 <script>
-function formateaRutUsuario(rut) {
+function formateaRutCliente(rut) {
     
     var actual = rut.replace(/^0+/, "");
     
@@ -131,6 +164,6 @@ function formateaRutUsuario(rut) {
         rutPuntos = rutPuntos + "-" + dv;
     }
     
-    $('#input_rut_add').val(rutPuntos);
+    $('#input_rut_cliente_add').val(rutPuntos);
 }
 </script>

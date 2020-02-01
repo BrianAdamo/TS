@@ -41,7 +41,7 @@
                         </div>
                         
                         <!-- Espacio en Blanco -->
-                        <div class="fadeIn first">
+                        <div class="fadeIn third">
                           <!--<img src="assets/images/avatars/1.jpg" id="icon" alt="User Icon" /> -->
                           <br>
                         </div>
@@ -51,7 +51,7 @@
                         </div>
                         
                         <!-- Espacio en Blanco -->
-                        <div class="fadeIn first">
+                        <div class="fadeIn fourth">
                           <!--<img src="assets/images/avatars/1.jpg" id="icon" alt="User Icon" /> -->
                           <br>
                         </div>

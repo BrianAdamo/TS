@@ -12,9 +12,12 @@
     <!-- ESTILOS -->
     
     <link href="./main.css" rel="stylesheet">
+    
     <link href="css/sw2css.css" rel="stylesheet">
     <link href="css/miscss.css" rel="stylesheet">
     <script type="text/javascript" src="js/sw2js.js"></script>
+    
+    
 </head>
 <body>
     <form method="POST" name="formulario" id="formulario" class="needs-validation" novalidate> 
@@ -256,33 +259,39 @@
                         // no puede ver el menu MANTENEDORES si el usuario no es ADMINISTRADOR
                         if(msgcargo.equals("Usuario")||msgcargo.equals("Admin")){               
                         %>      
-                        
+                                
                                 <li>
-                                    <a href="index.jsp?divlogout=salir">
+                                    <a href="index.jsp?vp=inicio">
+                                        <i class="metismenu-icon pe-7s-graph2"></i>
+                                        Dashboard
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="index.jsp">
                                         <i class="metismenu-icon pe-7s-car"></i>
                                         Viajes
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="index.html">
+                                    <a href="index.jsp">
                                         <i class="metismenu-icon pe-7s-cash"></i>
                                         Transferencia
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="index.html">
+                                    <a href="index.jsp">
                                         <i class="metismenu-icon pe-7s-news-paper"></i>
                                         Rendiciones
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="index.html">
+                                    <a href="index.jsp">
                                         <i class="metismenu-icon pe-7s-news-paper"></i>
                                         Viaticos
                                     </a>
                                 </li>
                                 <li  >
-                                    <a href="tables-regular.html">
+                                    <a href="index.jsp">
                                         <i class="metismenu-icon pe-7s-wallet"></i>
                                         Sueldos
                                     </a>
@@ -298,7 +307,7 @@
                                     </a>
                                     <ul>
                                         <li>
-                                            <a href="elements-buttons-standard.html">
+                                            <a href="index.jsp?vp=clientes">
                                                 <i class="metismenu-icon">
                                                 </i>Clientes
                                             </a>
@@ -343,13 +352,19 @@
                 
                     <% 
                         if(msglogeo.equals("Logeado")){
+                            
                             if(msgcargo.equals("Admin")){  
                                         //Variables Privadas ( Despues de Login)  ADMINISTRADOR  
                                         String variableprivadaadmin = request.getParameter("vp");
                                         if (variableprivadaadmin != null){
                                         switch(variableprivadaadmin){         
 
-                                        case "usuarios":
+                                         case "inicio":
+                                    %>
+                                         <%@ include file="vistas/inicio/inicio.jsp" %>
+                                     <%
+                                         break;
+                                         case "usuarios":
                                     %>
                                         <%@ include file="vistas/usuarios/usuarios.jsp" %>
                                      <%
@@ -363,15 +378,27 @@
                                     %>
                                          <%@ include file="vistas/usuarios/editusuarios.jsp" %>
                                      <%
-                                         break;  
+                                         break;
+                                         case "clientes":
+                                    %>
+                                         <%@ include file="vistas/clientes/clientes.jsp" %>
+                                     <%
+                                         break;
+                                         case "addclientes":
+                                    %>
+                                         <%@ include file="vistas/clientes/addclientes.jsp" %>
+                                     <%
+                                         break;
+                                         case "editclientes":
+                                    %>
+                                         <%@ include file="vistas/clientes/editclientes.jsp" %>
+                                     <%
+                                         break;
                                              
                                         }
                                     }
                                     
-                                    //LUEGO DEL LOGIN PANTALLA DE INICIO MUESTRA ESTO 
-                                     %>
-                                         <%@ include file="vistas/usuarios/usuarios.jsp" %>
-                                     <%              
+                                                  
                     }
                     if(msgcargo.equals("Usuario")){  
                         //Variables generales ( Despues de Login) Usuario
@@ -419,8 +446,7 @@
     <!-- Boostrap,jquery y poppers -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <!-- sweetalert -->
-    
+    <!-- Select -->
     <!-- MIS JS -->
     <script type="text/javascript" src="./assets/scripts/main.js"></script>
     <script type="text/javascript" src="js/misjs.js"></script>

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package usuarios;
+package clientes;
 
 import config.conexion;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Brian
  */
-public class ServletUsuariosAdd extends HttpServlet {
+public class ServletClienteEdit extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,46 +38,50 @@ public class ServletUsuariosAdd extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-                //String estado=request.getParameter("EstadoCategoriaGuardar");
-                String nombre= request.getParameter("input_nombre_add");
-                String rut= request.getParameter("input_rut_add");
-                String email= request.getParameter("input_email_add");
-                String contra= request.getParameter("input_contra_add");
-                String cargo= request.getParameter("input_cargo_add");
-                
-                //int estado = Integer.parseInt(request.getParameter("EstadoSubcategoriaGuardar"));
+                int id_cliente_edit = Integer.parseInt(request.getParameter("input_id_edit"));
+                String nombre_cliente_edit = request.getParameter("input_nombre_edit");
+                String rut_cliente_edit = request.getParameter("input_rut_edit");
+                String nombre_contacto_edit = request.getParameter("input_contacto_edit");
+                String celular_contacto_edit = request.getParameter("input_celular_edit");
+                String correo_cliente_edit = request.getParameter("input_correo_edit");
+                int dias_cliente_edit = Integer.parseInt(request.getParameter("input_dias_edit"));
+                String estado_cliente_edit = request.getParameter("input_estado_edit");
                 
                 // Define la conexión
                 Connection cn = conexion.getConnection(); 
                 // Llamada al procedimiento almacenado
-                CallableStatement cst = cn.prepareCall("{Call AddUsuario (?,?,?,?,?,?)}");
+                CallableStatement cst = cn.prepareCall("{Call EditCliente (?,?,?,?,?,?,?,?,?)}");
                 // Parametro 1 del procedimiento almacenado
-                cst.setString(1, nombre);
+                cst.setString(1, nombre_cliente_edit);
                 // Parametro 2 del procedimiento almacenado
-                cst.setString(2, rut);
+                cst.setString(2, rut_cliente_edit);
                 // Parametro 3 del procedimiento almacenado
-                cst.setString(3, email);
+                cst.setString(3, nombre_contacto_edit);
                 
-                cst.setString(4, contra);
+                cst.setString(4, celular_contacto_edit);
                 
-                cst.setString(5, cargo);
-//                out.println("<h1>Nombre Categoria:" + nombre+ "</h1>");
-//                out.println("<h1>Nombre Categoria:" + descripcion+ "</h1>");
-//                out.println("<h1>Nombre Categoria:" + estado+ "</h1>");
+                cst.setString(5, correo_cliente_edit);
+                
+                cst.setInt(6, dias_cliente_edit);
+                
+                cst.setString(7, estado_cliente_edit);
+                
+                cst.setInt(8, id_cliente_edit);
+                
                 // Definimos los tipos de los parametros de salida del procedimiento almacenado
-                cst.registerOutParameter(6, java.sql.Types.VARCHAR);
+                cst.registerOutParameter(9, java.sql.Types.VARCHAR);
                
                
                 // Ejecuta el procedimiento almacenado
                 cst.execute();
                 
                 // Se obtienen la salida del procedimineto almacenado
-                String mensajeRetorno = cst.getString(6);
+                String mensajeRetorno = cst.getString(9);
                 
                 //seteo valor parametro obtenido del procedure
                 request.getSession().setAttribute("mensajeRetorno",mensajeRetorno);
                 
-                RequestDispatcher rd = request.getRequestDispatcher("index.jsp?vp=usuarios");
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp?vp=clientes");
         
                 rd.forward(request, response);
             
@@ -99,7 +103,7 @@ public class ServletUsuariosAdd extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletUsuariosAdd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletClienteEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -117,7 +121,7 @@ public class ServletUsuariosAdd extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletUsuariosAdd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletClienteEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -20,6 +20,18 @@
         <servlet-name>ServletLogin</servlet-name>
         <servlet-class>login.ServletLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletClienteAdd</servlet-name>
+        <servlet-class>clientes.ServletClienteAdd</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletClienteDel</servlet-name>
+        <servlet-class>clientes.ServletClienteDel</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletClienteEdit</servlet-name>
+        <servlet-class>clientes.ServletClienteEdit</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletUsuariosAdd</servlet-name>
         <url-pattern>/ServletUsuariosAdd</url-pattern>
@@ -39,6 +51,18 @@
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/ServletLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletClienteAdd</servlet-name>
+        <url-pattern>/ServletClienteAdd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletClienteDel</servlet-name>
+        <url-pattern>/ServletClienteDel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletClienteEdit</servlet-name>
+        <url-pattern>/ServletClienteEdit</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

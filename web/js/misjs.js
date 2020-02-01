@@ -6,7 +6,7 @@ function IrAServletUsandoPost(direccionACambiar){
 function mensaje(){
    alert("Alerta");
 }
-
+//Usuarios
 //Eliminar Usuario
 $(document).ready(function(){
 $(document).on('click', '.delbtn', function(){
@@ -41,7 +41,7 @@ IrAServletUsandoPost('index.jsp?vp=editusuarios');
 
 });
 });
-
+//Verificar cambios realizados en usuarios
 $(document).ready(function(){
 	$("#input_nombre_edit").keyup(function(){
             //$('#ValNombreEdit').text('Con Cambios');
@@ -64,3 +64,65 @@ $(document).ready(function(){
             $('#ValContraEdit').css({'color':'rgb(218, 174, 0)'});
 	});
 });
+//Colocar puntos y guias por defecto a el Rut
+
+
+//Clientes
+//Eliminar Cliente
+$(document).ready(function(){
+$(document).on('click', '.delbtncliente', function(){
+var id=$(this).attr('data-id');
+var nombre=$('#nombre_cliente'+id).text();
+
+$('#idclientemodal').val(id);
+$('#nombreclientemodal').val(nombre);
+
+$('.btnmodaldelete').click();
+
+});
+});
+//Editar Cliente
+$(document).ready(function(){
+$(document).on('click', '.editbtncliente', function(){
+    
+var id=$(this).attr('data-id');
+var nombre=$('#nombre_cliente'+id).text();
+var rut=$('#rut_cliente'+id).text();
+var contacto=$('#contacto_cliente'+id).text();
+var celular=$('#celular_cliente'+id).text();
+var email=$('#correo_cliente'+id).text();
+var dias=$('#dias_pago_cliente'+id).text();
+var estado=$('#estado_cliente'+id).text();
+
+$('#idedit').val(id);
+$('#nombreedit').val(nombre);
+$('#rutedit').val(rut);
+$('#contactoedit').val(contacto);
+$('#celularedit').val(celular);
+$('#emailedit').val(email);
+$('#diasedit').val(dias);
+$('#estadoedit').val(estado);
+
+IrAServletUsandoPost('index.jsp?vp=editclientes');
+
+});
+});
+//
+
+
+
+// BUSCADOR EN TABLAS 
+ $(document).ready(function(){
+ $("#search").keyup(function(){
+ _this = this;
+ // Show only matching TR, hide rest of them
+ $.each($("#mytable tbody tr"), function() {
+ if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+ $(this).hide();
+ else
+ $(this).show();
+ });
+ });
+});
+
+

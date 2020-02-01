@@ -72,7 +72,7 @@ public class ServletLogin extends HttpServlet {
                 request.getSession().setAttribute("mensajeRetornoUsuario",mensajeRetornoUsuario);
                 request.getSession().setAttribute("mensajeRetornoCargo",mensajeRetornoCargo);
                 
-                RequestDispatcher rd = request.getRequestDispatcher("index.jsp?");
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp?vp=inicio");
         
                 rd.forward(request, response);
         }

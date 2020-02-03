@@ -113,10 +113,18 @@ IrAServletUsandoPost('index.jsp?vp=editclientes');
 
 // BUSCADOR EN TABLAS 
  $(document).ready(function(){
- $("#search").keyup(function(){
+ $("#input_origen_add").keyup(function(){
  _this = this;
- // Show only matching TR, hide rest of them
- $.each($("#mytable tbody tr"), function() {
+ $.each($("#btramo tbody tr"), function() {
+ if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+ $(this).hide();
+ else
+ $(this).show();
+ });
+ });
+ $("#input_destino_add").keyup(function(){
+ _this = this;
+ $.each($("#btramo tbody tr"), function() {
  if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
  $(this).hide();
  else
@@ -124,5 +132,6 @@ IrAServletUsandoPost('index.jsp?vp=editclientes');
  });
  });
 });
+
 
 

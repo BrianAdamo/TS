@@ -32,6 +32,10 @@
         <servlet-name>ServletClienteEdit</servlet-name>
         <servlet-class>clientes.ServletClienteEdit</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletTramoAdd</servlet-name>
+        <servlet-class>tramos.ServletTramoAdd</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletUsuariosAdd</servlet-name>
         <url-pattern>/ServletUsuariosAdd</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>ServletClienteEdit</servlet-name>
         <url-pattern>/ServletClienteEdit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletTramoAdd</servlet-name>
+        <url-pattern>/ServletTramoAdd</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

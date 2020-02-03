@@ -42,3 +42,25 @@
         </div>
     </div>
 </div>
+<!-- Modal Delete Tramo -->
+<div class="modal fade" id="modaldeletetramo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" >
+                <Center><h4 class="modal-title" id="myModalLabel"><span style="Color:#D92550;" class="fas fa-exclamation-circle" aria-hidden="true"></span> Eliminar Tramo</h4></Center>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <b>¿Esta seguro de eliminar este tramo?</b>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" onclick="javascript:IrAServletUsandoPost('ServletClienteDel');" id="btnEliminar" name="btnEliminar" >Eliminar</button>
+            </div>
+            <div hidden class="form-group input-group">
+                <input style="width:100px;" class="form-control" id="nombretramomodal" name="nombretramomodal" >   
+                <input style="width:100px;" class="form-control" id="idtramomodal" name="idtramomodal" >
+            </div> 
+        </div>
+    </div>
+</div>

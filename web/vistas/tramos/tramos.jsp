@@ -1,6 +1,6 @@
+<%@page import="tramos.tramos"%>
+<%@page import="tramos.consultatramos"%>
 <%@page import="java.util.LinkedList"%>
-<%@page import="clientes.consultaclientes"%>
-<%@page import="clientes.clientes"%>
 <div class="app-main__outer">
                     <div class="app-main__inner">
                         <div class="app-page-title">
@@ -11,8 +11,8 @@
                                         <i class="pe-7s-users icon-gradient bg-mean-fruit">
                                         </i>
                                     </div>
-                                    <div>Clientes
-                                        <div class="page-title-subheading">Clientes de la empresa, para facturacion, viajes y control de libros.
+                                    <div>Tramos
+                                        <div class="page-title-subheading">Tramos de viajes, valores, estados y versiones de cada tarifa.
                                         </div>
                                     </div>
                                 </div>
@@ -28,10 +28,10 @@
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                             <ul class="nav flex-column">
                                                 <li class="nav-item">
-                                                    <a href="index.jsp?vp=addclientes" class="nav-link">
+                                                    <a href="index.jsp?vp=addtramos" class="nav-link">
                                                         <i class="nav-link-icon lnr-inbox"></i>
                                                         <span class="btn-icon-wrapper pr-2 opacity-7">
-                                                            <i class="fas fa-plus-square fa-w-20"></i>
+                                                            <i class="fas fa-plus fa-w-20"></i>
                                                         </span>
                                                         <span>
                                                             Agregar
@@ -46,19 +46,22 @@
                         </div>            
                         <!-- INICIO CONTENIDO -->
                             <div > 
-                                <div hidden class="col">
-                                 <input type="text" name="idedit" id="idedit">
-                                 <input type="text" name="nombreedit" id="nombreedit">   
-                                 <input type="text" name="rutedit" id="rutedit">
-                                 <input type="text" name="contactoedit" id="contactoedit">
-                                 <input type="text" name="celularedit" id="celularedit">
-                                 <input type="text" name="emailedit" id="emailedit">   
-                                 <input type="text" name="diasedit" id="diasedit">   
-                                 <select name="estadoedit" id="estadoedit">
+                                <div  class="col">
+                                 <input type="text" name="idtramoedit" id="idtramoedit">
+                                 <input type="text" name="nombretramoedit" id="origentramoedit">
+                                 <input type="text" name="nombretramoedit" id="destinotramoedit"> 
+                                 <input type="text" name="clientetramoedit" id="clientetramoedit">
+                                 <input type="text" name="valor12edit" id="valor12edit">
+                                 <input type="text" name="valor24edit" id="valor24edit">
+                                 <input type="text" name="acercamiento12edit" id="acercamiento12edit">
+                                 <input type="text" name="acercamiento24edit" id="acercamiento24edit">
+                                 <input type="text" name="tarifaedit" id="tarifaedit">   
+                                 <input type="text" name="comentarioedit" id="comentarioedit">   
+                                 <select name="estadotramoedit" id="estadotramoedit">
                                      <option>Activo</option>
                                      <option>Desactivado</option>
                                  </select>
-                                 <button type="button" id="btnmodaldelete" class="btn btn-primary btnmodaldelete" data-toggle="modal" data-target="#modaldeletecliente"> Modal </button>
+                                 <button type="button" id="btnmodaldelete" class="btn btn-primary btnmodaldelete" data-toggle="modal" data-target="#modaldeletetramo"> Modal </button>
                                 
                                  </div>  
                             </div>
@@ -71,35 +74,41 @@
                                                 <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Nombre</th>
-                                                    <th>Rut</th>
-                                                    <th>Contacto</th>
-                                                    <th>Celular</th>
-                                                    <th>Correo</th>
-                                                    <th>Dias Pagos</th>
+                                                    <th>Origen</th>
+                                                    <th>Destino</th>
+                                                    <th>Cliente</th>
+                                                    <th>Valor 12</th>
+                                                    <th>Valor 27</th>
+                                                    <th>Acercamiento 12</th>
+                                                    <th>Acercamiento 27</th>
+                                                    <th>Tarifa</th>
+                                                    <th>Comentario</th>
                                                     <th>Estado</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <%
-                                                    LinkedList<clientes> listacliente = consultaclientes.getclientes();
-                                                    for (int i=0;i<listacliente.size();i++)
+                                                <%
+                                                    LinkedList<tramos> listatramo = consultatramos.gettramos();
+                                                    for (int i=0;i<listatramo.size();i++)
                                                     {   
 
                                                         out.println("<tr>");
-                                                        out.println("<td><span id=\"id_cliente"+listacliente.get(i).getId_cliente()+"\">"+listacliente.get(i).getId_cliente()+"</span></td>");
-                                                        out.println("<td><span id=\"nombre_cliente"+listacliente.get(i).getId_cliente()+"\">"+listacliente.get(i).getNombre_cliente()+"</span></td>");
-                                                        out.println("<td><span id=\"rut_cliente"+listacliente.get(i).getId_cliente()+"\">"+listacliente.get(i).getRut_cliente()+"</span></td>");
-                                                        out.println("<td><span id=\"contacto_cliente"+listacliente.get(i).getId_cliente()+"\">"+listacliente.get(i).getContacto_cliente()+"</span></td>");
-                                                        out.println("<td><span id=\"celular_cliente"+listacliente.get(i).getId_cliente()+"\">"+listacliente.get(i).getCelular_cliente()+"</span></td>");
-                                                        out.println("<td><span id=\"correo_cliente"+listacliente.get(i).getId_cliente()+"\">"+listacliente.get(i).getCorreo_cliente()+"</span></td>");
-                                                        out.println("<td><span id=\"dias_pago_cliente"+listacliente.get(i).getId_cliente()+"\">"+listacliente.get(i).getDias_pago_cliente()+"</span></td>");
-                                                        out.println("<td><span id=\"estado_cliente"+listacliente.get(i).getId_cliente()+"\">"+listacliente.get(i).getEstado_cliente()+"</span></td>");
+                                                        out.println("<td><span id=\"id_cliente"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getId_tramo()+"</span></td>");
+                                                        out.println("<td><span id=\"origen_tramo"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getOrigen_tramo()+"</span></td>");
+                                                        out.println("<td><span id=\"destino_tramo"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getDestino_tramo()+"</span></td>");
+                                                        out.println("<td><span id=\"nombre_cliente"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getNombre_cliente()+"</span></td>");
+                                                        out.println("<td><span id=\"valor_12"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getValor_12()+"</span></td>");
+                                                        out.println("<td><span id=\"valor_27"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getValor_27()+"</span></td>");
+                                                        out.println("<td><span id=\"acercamiento_12"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getAcercamiento_12()+"</span></td>");
+                                                        out.println("<td><span id=\"acercamiento_27"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getAcercamiento_27()+"</span></td>");
+                                                        out.println("<td><span id=\"version_tarifa"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getVersion_tarifa()+"</span></td>");
+                                                        out.println("<td><span id=\"comentario_tramo"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getComentario_tramo()+"</span></td>");
+                                                        out.println("<td><span id=\"estado_tramo"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getEstado_tramo()+"</span></td>");
                                                         out.println("<td>"
                                                         + "<div class=\"btn-group\" role=\"group\" aria-label=\"Basic example\">"
-                                                        + "<button  data-id="+listacliente.get(i).getId_cliente()+ " type=\"button\" class=\"btn btn-info sombra-acciones btn-sm fas fa-edit editbtncliente\">Editar</button>"
-                                                        + "<button data-id="+listacliente.get(i).getId_cliente()+ " type=\"button\"  class=\"btn btn-danger sombra-acciones btn-sm fas fa-trash delbtncliente\" data-toggle=\"modal\" >Eliminar</button>"
+                                                        + "<button  data-id="+listatramo.get(i).getId_tramo()+ " type=\"button\" class=\"btn btn-info sombra-acciones btn-sm fas fa-edit editbtntramo\">Editar</button>"
+                                                        + "<button data-id="+listatramo.get(i).getId_tramo()+ " type=\"button\"  class=\"btn btn-danger sombra-acciones btn-sm fas fa-trash delbtntramo\" data-toggle=\"modal\" >Eliminar</button>"
                                                         + "</div>"
                                                         + ""
                                                         +"</td>");
@@ -158,8 +167,8 @@
                                             Swal.fire({
                                               position: 'top-end',
                                               icon: 'error',
-                                              title: 'Cliente Existente!',
-                                              text: 'Rut del cliente ya existe en el sistema.' ,
+                                              title: 'Tramo Existente!',
+                                              text: 'Ya existe este tramo para el cliente en esta version de tarifa, si desea agregar este tramo pruebe cambiando la version de tarifa.' ,
                                               showConfirmButton: false,
                                               timer: 3000,
                                               timerProgressBar: true,
@@ -181,8 +190,8 @@
                                             Swal.fire({
                                               position: 'top-end',
                                               icon: 'success',
-                                              title: 'Cliente Registrado!',
-                                              text: 'Cliente registrado exitosamente.' ,
+                                              title: 'Usuario Registrado!',
+                                              text: 'Usuario registrado exitosamente.' ,
                                               showConfirmButton: false,
                                               timer: 3000,
                                               timerProgressBar: true,
@@ -203,8 +212,8 @@
                                             Swal.fire({
                                               position: 'top-end',
                                               icon: 'success',
-                                              title: 'Cliente Eliminado!',
-                                              text: 'Cliente eliminado exitosamente.' ,
+                                              title: 'Usuario Eliminado!',
+                                              text: 'Usuario eliminado exitosamente.' ,
                                               showConfirmButton: false,
                                               timer: 3000,
                                               timerProgressBar: true,
@@ -225,8 +234,8 @@
                                             Swal.fire({
                                               position: 'top-end',
                                               icon: 'success',
-                                              title: 'Cliente Editado!',
-                                              text: 'Cliente editado exitosamente.' ,
+                                              title: 'Usuario Editado!',
+                                              text: 'Usuario editado exitosamente.' ,
                                               showConfirmButton: false,
                                               timer: 3000,
                                               timerProgressBar: true,

@@ -10,9 +10,7 @@
     <meta name="msapplication-tap-highlight" content="no">
    
     <!-- ESTILOS -->
-    
     <link href="./main.css" rel="stylesheet">
-    
     <link href="css/sw2css.css" rel="stylesheet">
     <link href="css/miscss.css" rel="stylesheet">
     <script type="text/javascript" src="js/sw2js.js"></script>
@@ -319,13 +317,13 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="elements-icons.html">
+                                            <a href="index.jsp?vp=flota">
                                                 <i class="metismenu-icon">
                                                 </i>Flota
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="elements-badges-labels.html">
+                                            <a href="index.jsp?vp=tramos">
                                                 <i class="metismenu-icon">
                                                 </i>Tramos
                                             </a>
@@ -394,8 +392,23 @@
                                          <%@ include file="vistas/clientes/editclientes.jsp" %>
                                      <%
                                          break;
-                                             
+                                         case "tramos":
+                                    %>
+                                         <%@ include file="vistas/tramos/tramos.jsp" %>
+                                     <%
+                                         break;
+                                         case "addtramos":
+                                    %>
+                                         <%@ include file="vistas/tramos/addtramo.jsp" %> 
+                                     <%
+                                         break;
+                                         case "edittramos":
+                                    %>
+                                         
+                                     <%
+                                         break;
                                         }
+
                                     }
                                     
                                                   

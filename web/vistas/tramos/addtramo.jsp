@@ -200,14 +200,9 @@
                                             <table name="btramo" id="btramo" class="table table-bordered  table-striped table-hover" >
                                                 <thead>
                                                 <tr>
-                                                    <th>#</th>
                                                     <th>Origen</th>
                                                     <th>Destino</th>
                                                     <th>Cliente</th>
-                                                    <th>Valor 12</th>
-                                                    <th>Valor 27</th>
-                                                    <th>Acercamiento 12</th>
-                                                    <th>Acercamiento 27</th>
                                                     <th>Tarifa</th>
                                                     <th>Comentario</th>
                                                     <th>Estado</th>
@@ -221,14 +216,9 @@
                                                     {   
 
                                                         out.println("<tr>");
-                                                        out.println("<td><span id=\"id_cliente"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getId_tramo()+"</span></td>");
                                                         out.println("<td><span id=\"origen_tramo"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getOrigen_tramo()+"</span></td>");
                                                         out.println("<td><span id=\"destino_tramo"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getDestino_tramo()+"</span></td>");
                                                         out.println("<td><span id=\"nombre_cliente"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getNombre_cliente()+"</span></td>");
-                                                        out.println("<td><span id=\"valor_12"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getValor_12()+"</span></td>");
-                                                        out.println("<td><span id=\"valor_27"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getValor_27()+"</span></td>");
-                                                        out.println("<td><span id=\"acercamiento_12"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getAcercamiento_12()+"</span></td>");
-                                                        out.println("<td><span id=\"acercamiento_27"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getAcercamiento_27()+"</span></td>");
                                                         out.println("<td><span id=\"version_tarifa"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getVersion_tarifa()+"</span></td>");
                                                         out.println("<td><span id=\"comentario_tramo"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getComentario_tramo()+"</span></td>");
                                                         out.println("<td><span id=\"estado_tramo"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getEstado_tramo()+"</span></td>");
@@ -240,8 +230,6 @@
                                                         + ""
                                                         +"</td>");
                                                         out.println("</tr>");
-
-
                                                     }
                                                     %>
                                                 </tbody>

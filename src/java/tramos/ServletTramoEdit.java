@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package login;
+package tramos;
 
 import config.conexion;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Brian
  */
-public class ServletLogin extends HttpServlet {
+public class ServletTramoEdit extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,42 +37,57 @@ public class ServletLogin extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             
-            String rut= request.getParameter("loginrut");
-            String contra= request.getParameter("logincontra");
+            int id_edit = Integer.parseInt(request.getParameter("input_id_edit"));
             
-             // Define la conexión
+            String origen_edit = request.getParameter("input_origen_edit");
+            String destino_edit = request.getParameter("input_destino_edit");
+            int cliente_edit = Integer.parseInt(request.getParameter("input_cliente_tramo_edit"));
+            int tarifa_edit = Integer.parseInt(request.getParameter("input_tarifa_edit"));
+            
+            float valor12_edit = Float.parseFloat(request.getParameter("input_valor12_edit"));
+            float valor27_edit = Float.parseFloat(request.getParameter("input_valor27_edit"));
+            float acercamiento12_edit = Float.parseFloat(request.getParameter("input_acercamiento12_edit"));
+            float acercamiento27_edit = Float.parseFloat(request.getParameter("input_acercamiento27_edit"));
+            
+            String comentario_tramo_edit = request.getParameter("input_comentario_tramo_edit");
+            String estado_tramo_edit = request.getParameter("input_estado_tramo_edit");
+            
+            String concat_edit = origen_edit+"-"+destino_edit+"-"+cliente_edit+"-"+tarifa_edit;
+            
+            
+            // Define la conexión
                 Connection cn = conexion.getConnection(); 
                 // Llamada al procedimiento almacenado
-                CallableStatement cst = cn.prepareCall("{Call login (?,?,?,?,?)}");
-                // Parametro 1 del procedimiento almacenado
-                cst.setString(1, rut);
-                // Parametro 2 del procedimiento almacenado
-                cst.setString(2, contra);
+                CallableStatement cst = cn.prepareCall("{Call EditTramo (?,?,?,?,?,?,?,?,?,?,?,?,?)}");
                 
-                // Logeo
-                cst.registerOutParameter(3, java.sql.Types.VARCHAR);
-                // Usuario
-                cst.registerOutParameter(4, java.sql.Types.VARCHAR);
-                // Cargo
-                cst.registerOutParameter(5, java.sql.Types.VARCHAR);
+                cst.setString(1, origen_edit);
+                cst.setString(2, destino_edit);
+                cst.setFloat(3, valor12_edit);
+                cst.setFloat(4, valor27_edit);
+                cst.setFloat(5, acercamiento12_edit);
+                cst.setFloat(6, acercamiento27_edit);
+                cst.setInt(7, cliente_edit);
+                cst.setInt(8, tarifa_edit);
+                cst.setString(9, comentario_tramo_edit);
+                cst.setString(10, estado_tramo_edit);
+                cst.setString(11, concat_edit);
+                cst.setInt(12, id_edit);
+                
+                // Definimos los tipos de los parametros de salida del procedimiento almacenado
+                cst.registerOutParameter(13, java.sql.Types.VARCHAR);
                
                
                 // Ejecuta el procedimiento almacenado
                 cst.execute();
                 
                 // Se obtienen la salida del procedimineto almacenado
-                String mensajeRetornoLogeo = cst.getString(5);
-                String mensajeRetornoUsuario = cst.getString(3);
-                String mensajeRetornoCargo = cst.getString(4);
+                String mensajeRetorno = cst.getString(13);
                 
                 //seteo valor parametro obtenido del procedure
-                request.getSession().setAttribute("mensajeRetornoLogeo",mensajeRetornoLogeo);
-                request.getSession().setAttribute("mensajeRetornoUsuario",mensajeRetornoUsuario);
-                request.getSession().setAttribute("mensajeRetornoCargo",mensajeRetornoCargo);
+                request.getSession().setAttribute("mensajeRetorno",mensajeRetorno);
                 
-                RequestDispatcher rd = request.getRequestDispatcher("index.jsp?vp=inicio");
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp?vp=tramos");
         
                 rd.forward(request, response);
         }
@@ -93,7 +108,7 @@ public class ServletLogin extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletTramoEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -111,7 +126,7 @@ public class ServletLogin extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletTramoEdit.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

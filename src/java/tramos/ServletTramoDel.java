@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package login;
+package tramos;
 
 import config.conexion;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Brian
  */
-public class ServletLogin extends HttpServlet {
+public class ServletTramoDel extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,44 +37,32 @@ public class ServletLogin extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             
-            String rut= request.getParameter("loginrut");
-            String contra= request.getParameter("logincontra");
+            int id= Integer.parseInt(request.getParameter("idtramomodal"));
             
-             // Define la conexión
+            // Define la conexión
                 Connection cn = conexion.getConnection(); 
                 // Llamada al procedimiento almacenado
-                CallableStatement cst = cn.prepareCall("{Call login (?,?,?,?,?)}");
+                CallableStatement cst = cn.prepareCall("{Call DelTramo (?,?)}");
                 // Parametro 1 del procedimiento almacenado
-                cst.setString(1, rut);
-                // Parametro 2 del procedimiento almacenado
-                cst.setString(2, contra);
-                
-                // Logeo
-                cst.registerOutParameter(3, java.sql.Types.VARCHAR);
-                // Usuario
-                cst.registerOutParameter(4, java.sql.Types.VARCHAR);
-                // Cargo
-                cst.registerOutParameter(5, java.sql.Types.VARCHAR);
+                cst.setInt(1, id);
+                // Definimos los tipos de los parametros de salida del procedimiento almacenado
+                cst.registerOutParameter(2, java.sql.Types.VARCHAR);
                
                
                 // Ejecuta el procedimiento almacenado
                 cst.execute();
                 
                 // Se obtienen la salida del procedimineto almacenado
-                String mensajeRetornoLogeo = cst.getString(5);
-                String mensajeRetornoUsuario = cst.getString(3);
-                String mensajeRetornoCargo = cst.getString(4);
+                String mensajeRetorno = cst.getString(2);
                 
                 //seteo valor parametro obtenido del procedure
-                request.getSession().setAttribute("mensajeRetornoLogeo",mensajeRetornoLogeo);
-                request.getSession().setAttribute("mensajeRetornoUsuario",mensajeRetornoUsuario);
-                request.getSession().setAttribute("mensajeRetornoCargo",mensajeRetornoCargo);
+                request.getSession().setAttribute("mensajeRetorno",mensajeRetorno);
                 
-                RequestDispatcher rd = request.getRequestDispatcher("index.jsp?vp=inicio");
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp?vp=tramos");
         
                 rd.forward(request, response);
+            
         }
     }
 
@@ -93,7 +81,7 @@ public class ServletLogin extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletTramoDel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -111,7 +99,7 @@ public class ServletLogin extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ServletLogin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServletTramoDel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -64,7 +64,7 @@ $(document).ready(function(){
             $('#ValContraEdit').css({'color':'rgb(218, 174, 0)'});
 	});
 });
-//Colocar puntos y guias por defecto a el Rut
+//
 
 
 //Clientes
@@ -110,19 +110,125 @@ IrAServletUsandoPost('index.jsp?vp=editclientes');
 //
 
 
+//Tramos
+//Eliminar Tramos
+$(document).ready(function(){
+$(document).on('click', '.delbtntramo', function(){
+    
+var id=$(this).attr('data-id');
+var Origen=$('#origen_tramo'+id).text();
+var Destino=$('#destino_tramo'+id).text();
+var tramo = Origen+"-"+Destino;
+
+$('#idtramomodal').val(id);
+$('#nombretramomodal').val(tramo);
+
+$('.btnmodaldelete').click();
+
+});
+});
+//Editar Tramos
+$(document).ready(function(){
+$(document).on('click', '.editbtntramo', function(){
+    
+var id=$(this).attr('data-id');
+var origen=$('#origen_tramo'+id).text();
+var destino=$('#destino_tramo'+id).text();
+var nomcliente=$('#nombre_cliente'+id).text();
+var valor12=$('#valor_12'+id).text();
+var valor27=$('#valor_27'+id).text();
+var acer12=$('#acercamiento_12'+id).text();
+var acer27=$('#acercamiento_27'+id).text();
+var tarifa=$('#version_tarifa'+id).text();
+var comentario=$('#comentario_tramo'+id).text();
+var estadotramo=$('#estado_tramo'+id).text();
+
+
+
+$('#idtramoedit').val(id);
+$('#origentramoedit').val(origen);
+$('#destinotramoedit').val(destino);
+$('#clientetramoedit').val(nomcliente);
+$('#valor12edit').val(valor12);
+$('#valor27edit').val(valor27);
+$('#acercamiento12edit').val(acer12);
+$('#acercamiento27edit').val(acer27);
+$('#tarifaedit').val(tarifa);
+$('#comentarioedit').val(comentario);
+$('#estadotramoedit').val(estadotramo);
+
+IrAServletUsandoPost('index.jsp?vp=edittramos');
+
+
+});
+});
+//Verificar cambios realizados en tramos
+function cambiocolor(){
+    $('#ValClienteEditicon').addClass("fas fa-eye");
+    $('#ValClienteEditicon').css({'color':'#2b935e'});
+    $('#ValClienteEdittext').text("Confirmado!");   
+}
+$(document).ready(function(){
+	$("#input_origen_edit").keyup(function(){
+            $('#ValOrigenEdit').css({'color':'rgb(218, 174, 0)'});
+	});
+        $("#input_destino_edit").keyup(function(){
+            $('#ValDestinoEdit').css({'color':'rgb(218, 174, 0)'});
+	});
+        
+        $("#input_tarifa_edit").keyup(function(){
+            //$('#ValCargoEdit').text('Con Cambios');
+            $('#ValTarifaEdit').css({'color':'rgb(218, 174, 0)'});
+	});
+        $("#input_valor12_edit").keyup(function(){
+            //$('#ValContraEdit').text('Con Cambios');
+            $('#ValValor12Edit').css({'color':'rgb(218, 174, 0)'});
+	});
+        $("#input_valor27_edit").keyup(function(){
+            //$('#ValContraEdit').text('Con Cambios');
+            $('#ValValor27Edit').css({'color':'rgb(218, 174, 0)'});
+	});
+        $("#input_valor12_edit").keyup(function(){
+            //$('#ValContraEdit').text('Con Cambios');
+            $('#ValContraEdit').css({'color':'rgb(218, 174, 0)'});
+	});
+        $("#input_valor12_edit").keyup(function(){
+            //$('#ValContraEdit').text('Con Cambios');
+            $('#ValContraEdit').css({'color':'rgb(218, 174, 0)'});
+	});
+        $("#input_valor12_edit").keyup(function(){
+            //$('#ValContraEdit').text('Con Cambios');
+            $('#ValContraEdit').css({'color':'rgb(218, 174, 0)'});
+	});
+});
+
+
+//
+
+
+
+
+//Pasar datos al campo concat con el que se hace la busqueda
+$(document).ready(function(){
+        var concat = "";
+    
+	$("#input_origen_add").keyup(function(){
+            concat= document.getElementById("input_origen_add").value;
+            $('#input_concat_add').val(concat);
+	});
+        $("#input_destino_add").keyup(function(){
+            concat2 = concat+document.getElementById("input_destino_add").value;
+            $('#input_concat_add').val(concat2);
+	});
+        
+        
+        
+});
+
 
 // BUSCADOR EN TABLAS 
  $(document).ready(function(){
- $("#input_origen_add").keyup(function(){
- _this = this;
- $.each($("#btramo tbody tr"), function() {
- if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
- $(this).hide();
- else
- $(this).show();
- });
- });
- $("#input_destino_add").keyup(function(){
+ $("#input_concat_add").keyup(function(){
  _this = this;
  $.each($("#btramo tbody tr"), function() {
  if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
@@ -132,6 +238,7 @@ IrAServletUsandoPost('index.jsp?vp=editclientes');
  });
  });
 });
-
-
-
+ 
+ 
+ 
+ 

@@ -8,7 +8,7 @@ public class conexion {
     public conexion() throws ClassNotFoundException, SQLException{      
            Class.forName("com.mysql.jdbc.Driver");
            //LOCAL
-           con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/stsl", "root", "root");
+           con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/ts", "root", "Dev2020!");
            //SERVIDOR
            //con = (Connection) DriverManager.getConnection("jdbc:mysql://node40626-patagoniaindomita.jelastic.saveincloud.net:3306/pic_reservas", "root", "ctYozw5F5R");
     }   
@@ -19,14 +19,14 @@ public class conexion {
         String dbDriver = "com.mysql.jdbc.Driver";       
         // Establece la conexion a utilizar contra la base de datos
         //local
-        String dbConnString = "jdbc:mysql://localhost:3306/stsl?serverTimezone=UTC";
+        String dbConnString = "jdbc:mysql://localhost:3306/ts?serverTimezone=UTC";
         //servidor
         //String dbConnString = "jdbc:mysql://node40626-patagoniaindomita.jelastic.saveincloud.net:3306/pic_reservas?verifyServerCertificate=false&useSSL=true";       
         // Establece el usuario de la base de datos
         String dbUser = "root";       
         // Establece la contraseÃ±a de la base de datos
         //local
-        String dbPassword = "root"; 
+        String dbPassword = "Dev2020!"; 
         //Servidor
         //String dbPassword = "ctYozw5F5R";       
         // Establece el driver de conexiÃ³n

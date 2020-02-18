@@ -36,6 +36,14 @@
         <servlet-name>ServletTramoAdd</servlet-name>
         <servlet-class>tramos.ServletTramoAdd</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletTramoDel</servlet-name>
+        <servlet-class>tramos.ServletTramoDel</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletTramoEdit</servlet-name>
+        <servlet-class>tramos.ServletTramoEdit</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletUsuariosAdd</servlet-name>
         <url-pattern>/ServletUsuariosAdd</url-pattern>
@@ -71,6 +79,14 @@
     <servlet-mapping>
         <servlet-name>ServletTramoAdd</servlet-name>
         <url-pattern>/ServletTramoAdd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletTramoDel</servlet-name>
+        <url-pattern>/ServletTramoDel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletTramoEdit</servlet-name>
+        <url-pattern>/ServletTramoEdit</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

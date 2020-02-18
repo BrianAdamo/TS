@@ -55,9 +55,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger" onclick="javascript:IrAServletUsandoPost('ServletClienteDel');" id="btnEliminar" name="btnEliminar" >Eliminar</button>
+                <button type="button" class="btn btn-danger" onclick="javascript:IrAServletUsandoPost('ServletTramoDel');" id="btnEliminar" name="btnEliminar" >Eliminar</button>
             </div>
-            <div hidden class="form-group input-group">
+            <div  class="form-group input-group">
                 <input style="width:100px;" class="form-control" id="nombretramomodal" name="nombretramomodal" >   
                 <input style="width:100px;" class="form-control" id="idtramomodal" name="idtramomodal" >
             </div> 

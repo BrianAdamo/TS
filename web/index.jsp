@@ -69,7 +69,7 @@
                         </li>
                         <li class="dropdown nav-item">
                             <a href="javascript:void(0);" class="nav-link">
-                                <i class="nav-link-icon fa fa-phone"></i>
+                                <i class="nav-link-icon fa fa-plus"></i>
                                 Contacto
                             </a>
                         </li>
@@ -166,8 +166,7 @@
                                             
                                             <%
                                         }
-                                        
-                                        if(msglogeo.equals("No Logeado")){
+                                        if(msglogeo.equals("No logeado")){
                                        %>
                                             
                                        <script>
@@ -404,7 +403,7 @@
                                          break;
                                          case "edittramos":
                                     %>
-                                         
+                                         <%@ include file="vistas/tramos/edittramo.jsp" %>
                                      <%
                                          break;
                                         }

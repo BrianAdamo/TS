@@ -46,15 +46,15 @@
                         </div>            
                         <!-- INICIO CONTENIDO -->
                             <div > 
-                                <div  class="col">
+                                <div hidden class="col">
                                  <input type="text" name="idtramoedit" id="idtramoedit">
-                                 <input type="text" name="nombretramoedit" id="origentramoedit">
-                                 <input type="text" name="nombretramoedit" id="destinotramoedit"> 
+                                 <input type="text" name="origentramoedit" id="origentramoedit">
+                                 <input type="text" name="destinotramoedit" id="destinotramoedit"> 
                                  <input type="text" name="clientetramoedit" id="clientetramoedit">
                                  <input type="text" name="valor12edit" id="valor12edit">
-                                 <input type="text" name="valor24edit" id="valor24edit">
+                                 <input type="text" name="valor27edit" id="valor27edit">
                                  <input type="text" name="acercamiento12edit" id="acercamiento12edit">
-                                 <input type="text" name="acercamiento24edit" id="acercamiento24edit">
+                                 <input type="text" name="acercamiento27edit" id="acercamiento27edit">
                                  <input type="text" name="tarifaedit" id="tarifaedit">   
                                  <input type="text" name="comentarioedit" id="comentarioedit">   
                                  <select name="estadotramoedit" id="estadotramoedit">
@@ -68,7 +68,7 @@
                         
                             <div class="col-lg-12">
                                 <div class="main-card mb-3 card">
-                                    <div class="card-body"><h5 class="card-title">Listado de Clientes</h5>
+                                    <div class="card-body"><h5 class="card-title">Listado de Tramos</h5>
                                         <div class="  table-responsive">
                                             <table class="table table-bordered  table-striped table-hover" >
                                                 <thead>
@@ -94,7 +94,7 @@
                                                     {   
 
                                                         out.println("<tr>");
-                                                        out.println("<td><span id=\"id_cliente"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getId_tramo()+"</span></td>");
+                                                        out.println("<td><span id=\"id_tramo"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getId_tramo()+"</span></td>");
                                                         out.println("<td><span id=\"origen_tramo"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getOrigen_tramo()+"</span></td>");
                                                         out.println("<td><span id=\"destino_tramo"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getDestino_tramo()+"</span></td>");
                                                         out.println("<td><span id=\"nombre_cliente"+listatramo.get(i).getId_tramo()+"\">"+listatramo.get(i).getNombre_cliente()+"</span></td>");
@@ -190,8 +190,8 @@
                                             Swal.fire({
                                               position: 'top-end',
                                               icon: 'success',
-                                              title: 'Usuario Registrado!',
-                                              text: 'Usuario registrado exitosamente.' ,
+                                              title: 'Tramo Registrado!',
+                                              text: 'Tramo registrado exitosamente.' ,
                                               showConfirmButton: false,
                                               timer: 3000,
                                               timerProgressBar: true,
@@ -212,8 +212,8 @@
                                             Swal.fire({
                                               position: 'top-end',
                                               icon: 'success',
-                                              title: 'Usuario Eliminado!',
-                                              text: 'Usuario eliminado exitosamente.' ,
+                                              title: 'Tramo Eliminado!',
+                                              text: 'Tramo eliminado exitosamente.' ,
                                               showConfirmButton: false,
                                               timer: 3000,
                                               timerProgressBar: true,
@@ -234,8 +234,8 @@
                                             Swal.fire({
                                               position: 'top-end',
                                               icon: 'success',
-                                              title: 'Usuario Editado!',
-                                              text: 'Usuario editado exitosamente.' ,
+                                              title: 'Tramo Editado!',
+                                              text: 'Tramo editado exitosamente.' ,
                                               showConfirmButton: false,
                                               timer: 3000,
                                               timerProgressBar: true,

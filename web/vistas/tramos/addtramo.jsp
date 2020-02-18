@@ -36,14 +36,14 @@
                                     <div class="form-row">
                                         <div class="col-md-3 mb-3">
                                             <label for="validationCustom01">Origen:</label>
-                                            <input type="text" class="form-control filterText" id="input_origen_add" name="input_origen_add" onchange='filterText(this)' placeholder="Origen Traslado" required maxlength="50">
+                                            <input type="text" class="form-control" id="input_origen_add" name="input_origen_add"  placeholder="Origen Traslado" required maxlength="50">
                                             <div class="invalid-feedback">
                                                 ¡Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="validationCustom01">Destino:</label>
-                                            <input type="text" class="form-control filterText" id="input_destino_add" name="input_destino_add" onchange='filterText(this)' placeholder="Destino Traslado" required maxlength="50">
+                                            <input type="text" class="form-control" id="input_destino_add" name="input_destino_add"  placeholder="Destino Traslado" required maxlength="50">
                                             <div class="invalid-feedback">
                                                 ¡Campo Vacio!
                                             </div>
@@ -126,7 +126,12 @@
                                     <button class="btn btn-danger sombra"  type="button"><a style="color: #fff" href="index.jsp?vp=tramos">Cancelar</a></button>
                                     </div>
                                 </form> 
-            
+                            </div>
+                        </div> 
+                        <!-- FIN CONTENIDO -->    
+
+                    </div>
+</div>
                                 <script>
                                     // Example starter JavaScript for disabling form submissions if there are invalid fields
                                     (function() {
@@ -190,62 +195,3 @@
                                         }, false);
                                     })();
                                 </script>
-                            </div>
-                        </div>
-                                            
-                        <div class="col-lg-12">
-                                <div class="main-card mb-3 card">
-                                    <div class="card-body"><h5 class="card-title">Listado de Clientes</h5>
-                                        <div class="  table-responsive">
-                                            <table name="btramo" id="btramo" class="table table-bordered  table-striped table-hover" >
-                                                <thead>
-                                                <tr>
-                                                    <th>Origen</th>
-                                                    <th>Destino</th>
-                                                    <th>Cliente</th>
-                                                    <th>Tarifa</th>
-                                                    <th>Comentario</th>
-                                                    <th>Estado</th>
-                                                    <th>Acciones</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <%
-                                                    LinkedList<tramos> listatramo2 = consultatramos.gettramos();
-                                                    for (int i=0;i<listatramo2.size();i++)
-                                                    {   
-
-                                                        out.println("<tr>");
-                                                        out.println("<td><span id=\"origen_tramo"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getOrigen_tramo()+"</span></td>");
-                                                        out.println("<td><span id=\"destino_tramo"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getDestino_tramo()+"</span></td>");
-                                                        out.println("<td><span id=\"nombre_cliente"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getNombre_cliente()+"</span></td>");
-                                                        out.println("<td><span id=\"version_tarifa"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getVersion_tarifa()+"</span></td>");
-                                                        out.println("<td><span id=\"comentario_tramo"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getComentario_tramo()+"</span></td>");
-                                                        out.println("<td><span id=\"estado_tramo"+listatramo2.get(i).getId_tramo()+"\">"+listatramo2.get(i).getEstado_tramo()+"</span></td>");
-                                                        out.println("<td>"
-                                                        + "<div class=\"btn-group\" role=\"group\" aria-label=\"Basic example\">"
-                                                        + "<button  data-id="+listatramo2.get(i).getId_tramo()+ " type=\"button\" class=\"btn btn-info sombra-acciones btn-sm fas fa-edit editbtntramo\">Editar</button>"
-                                                        + "<button data-id="+listatramo2.get(i).getId_tramo()+ " type=\"button\"  class=\"btn btn-danger sombra-acciones btn-sm fas fa-trash delbtntramo\" data-toggle=\"modal\" >Eliminar</button>"
-                                                        + "</div>"
-                                                        + ""
-                                                        +"</td>");
-                                                        out.println("</tr>");
-                                                    }
-                                                    %>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                                                
-                            
-                        
-                        <!-- FIN CONTENIDO -->    
-
-                    </div>
-</div>
-
-<script>
-
-</script>

@@ -76,9 +76,9 @@ public class ServletTramoAdd extends HttpServlet {
                 
                 cst.setString(9, comentario_tramo);
                 
-                cst.setString(10, estado_tramo);
+                cst.setString(10, concat);
                 
-                cst.setString(11, concat);
+                cst.setString(11, estado_tramo);
                 
                 // Definimos los tipos de los parametros de salida del procedimiento almacenado
                 cst.registerOutParameter(12, java.sql.Types.VARCHAR);

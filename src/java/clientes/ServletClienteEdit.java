@@ -39,11 +39,11 @@ public class ServletClienteEdit extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
                 int id_cliente_edit = Integer.parseInt(request.getParameter("input_id_edit"));
-                String nombre_cliente_edit = request.getParameter("input_nombre_edit");
+                String nombre_cliente_edit = new String(request.getParameter("input_nombre_edit").getBytes("ISO-8859-1"), "UTF-8");
                 String rut_cliente_edit = request.getParameter("input_rut_edit");
-                String nombre_contacto_edit = request.getParameter("input_contacto_edit");
+                String nombre_contacto_edit = new String(request.getParameter("input_contacto_edit").getBytes("ISO-8859-1"), "UTF-8");
                 String celular_contacto_edit = request.getParameter("input_celular_edit");
-                String correo_cliente_edit = request.getParameter("input_correo_edit");
+                String correo_cliente_edit = new String(request.getParameter("input_correo_edit").getBytes("ISO-8859-1"), "UTF-8");
                 int dias_cliente_edit = Integer.parseInt(request.getParameter("input_dias_edit"));
                 String estado_cliente_edit = request.getParameter("input_estado_edit");
                 

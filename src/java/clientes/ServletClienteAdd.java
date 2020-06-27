@@ -39,11 +39,11 @@ public class ServletClienteAdd extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            String nombre_cliente = request.getParameter("input_nombre_cliente_add");
+            String nombre_cliente = new String(request.getParameter("input_nombre_cliente_add").getBytes("ISO-8859-1"), "UTF-8");
             String rut_cliente = request.getParameter("input_rut_cliente_add");
-            String nombre_contacto = request.getParameter("input_nombre_contacto_cliente_add");
+            String nombre_contacto = new String(request.getParameter("input_nombre_contacto_cliente_add").getBytes("ISO-8859-1"), "UTF-8");
             String celular_contacto = request.getParameter("input_celular_contacto_cliente_add");
-            String correo_cliente = request.getParameter("input_correo_contacto_cliente_add");
+            String correo_cliente = new String(request.getParameter("input_correo_contacto_cliente_add").getBytes("ISO-8859-1"), "UTF-8");
             int dias_cliente = Integer.parseInt(request.getParameter("input_dias_pagos_cliente_add"));
             String estado_cliente= request.getParameter("input_estado_cliente_add");
             

@@ -35,14 +35,14 @@ public class consultaclientes {
             {
                 
                 clientes cli = new clientes();
-                cli.setId_cliente(rs.getInt("id_cliente"));
-                cli.setNombre_cliente(rs.getString("nombre_cliente"));
-                cli.setRut_cliente(rs.getString("rut_cliente"));
-                cli.setContacto_cliente(rs.getString("contacto_cliente"));
-                cli.setCelular_cliente(rs.getString("celular_cliente"));
-                cli.setCorreo_cliente(rs.getString("correo_cliente"));
-                cli.setDias_pago_cliente(rs.getInt("dias_pago_cliente"));
-                cli.setEstado_cliente(rs.getString("estado_cliente"));
+                cli.setId_cliente(rs.getInt("id_cli"));
+                cli.setNombre_cliente(rs.getString("nombre_cli"));
+                cli.setRut_cliente(rs.getString("rut_cli"));
+                cli.setContacto_cliente(rs.getString("contacto_cli"));
+                cli.setCelular_cliente(rs.getString("celular_cli"));
+                cli.setCorreo_cliente(rs.getString("correo_cli"));
+                cli.setDias_pago_cliente(rs.getInt("dias_pago_cli"));
+                cli.setEstado_cliente(rs.getString("estado_cli"));
                 listaclientes.add(cli);
             }
             rs.close();

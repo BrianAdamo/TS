@@ -39,9 +39,9 @@ public class ServletUsuariosAdd extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
                 //String estado=request.getParameter("EstadoCategoriaGuardar");
-                String nombre= request.getParameter("input_nombre_add");
+                String nombre= new String(request.getParameter("input_nombre_add").getBytes("ISO-8859-1"), "UTF-8");
                 String rut= request.getParameter("input_rut_add");
-                String email= request.getParameter("input_email_add");
+                String email= new String(request.getParameter("input_email_add").getBytes("ISO-8859-1"), "UTF-8");
                 String contra= request.getParameter("input_contra_add");
                 String cargo= request.getParameter("input_cargo_add");
                 

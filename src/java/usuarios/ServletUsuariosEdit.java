@@ -39,9 +39,9 @@ public class ServletUsuariosEdit extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
                 int id = Integer.parseInt(request.getParameter("input_id_edit"));
-                String nombre= request.getParameter("input_nombre_edit");
+                String nombre= new String(request.getParameter("input_nombre_edit").getBytes("ISO-8859-1"), "UTF-8");
                 String rut= request.getParameter("input_rut_edit");
-                String email= request.getParameter("input_email_edit");
+                String email= new String(request.getParameter("input_email_edit").getBytes("ISO-8859-1"), "UTF-8");
                 String contra= request.getParameter("input_contra_edit");
                 String cargo= request.getParameter("input_cargo_edit");
                 

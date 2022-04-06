@@ -1,6 +1,12 @@
+<%-- 
+    Document   : flota
+    Created on : 19-01-2022, 6:22:04
+    Author     : BrianAdamo
+--%>
+
 <%@page import="java.util.LinkedList"%>
-<%@page import="usuarios.consultausuario"%>
-<%@page import="usuarios.usuarios"%>
+<%@page import="flota.consultaflota"%>
+<%@page import="flota.flota"%>
 
 <script>
 
@@ -16,8 +22,8 @@
                                         <i class="pe-7s-users icon-gradient bg-mean-fruit">
                                         </i>
                                     </div>
-                                    <div>Usuarios
-                                        <div class="page-title-subheading">Usuarios del sistema, "Emp" Empleado, "Admin" Administrador y "Test" Usuario de prueba para control de acceso y roles.
+                                    <div>Flota
+                                        <div class="page-title-subheading">Flota de la empresa.
                                         </div>
                                     </div>
                                 </div>
@@ -33,7 +39,7 @@
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                             <ul class="nav flex-column">
                                                 <li class="nav-item">
-                                                    <a href="index.jsp?vp=addusuarios" class="nav-link">
+                                                    <a href="index.jsp?vp=addflota" class="nav-link">
                                                         <i class="nav-link-icon lnr-inbox"></i>
                                                         <span class="btn-icon-wrapper pr-2 opacity-7">
                                                             <i class="fas fa-plus-square fa-w-20"></i>
@@ -49,9 +55,9 @@
                                 </div>    
                             </div>
                         </div>            
-                        <!-- INICIO CONTENIDO -->
+                        <!-- INICIO CONTENIDO 
                             <div > 
-                                <div class="col" hidden="">
+                                <div class="col" >
                                  <input type="text" name="idedit" id="idedit">
                                  <input type="text" name="nombreedit" id="nombreedit">   
                                  <input type="text" name="rutedit" id="rutedit">   
@@ -64,42 +70,50 @@
                                  <button type="button" id="btnmodaldelete" class="btn btn-primary btnmodaldelete" data-toggle="modal" data-target="#modaldeleteusuario"> Modal </button>
                                 
                                  </div>  
-                            </div>
+                            </div>-->
                         
                             <div class="col-lg-12">
                                 <div class="main-card mb-3 card">
-                                    <div class="card-body"><h5 class="card-title">Listado de Usuarios</h5>
+                                    <div class="card-body"><h5 class="card-title">Listado de Flota</h5>
                                         <div class="  table-responsive">
                                             <table class="table table-bordered  table-striped table-hover" >
                                                 <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Nombre</th>
-                                                    <th>Rut</th>
-                                                    <th>Email</th>
-                                                    <th>Contraseña</th>
-                                                    <th>Cargo</th>
+                                                    <th>Patente</th>
+                                                    <th>Tipo</th>
+                                                    <th>Marca</th>
+                                                    <th>Modelo</th>
+                                                    <th>Motor</th>
+                                                    <th>Chasis</th>
+                                                    <th>Año</th>
+                                                    <th>Estanque</th>
+                                                    <th>Estado</th>
                                                     <th>Acciones</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                     
                                                     <%
-                                                    LinkedList<usuarios> listausuario = consultausuario.getusuarios();
-                                                    for (int i=0;i<listausuario.size();i++)
+                                                    LinkedList<flota> listaflota = consultaflota.getflota();
+                                                    for (int i=0;i<listaflota.size();i++)
                                                     {   
 
                                                         out.println("<tr>");
-                                                        out.println("<td scope=\"row\"><span id=\"id_usuario"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getId_usuario()+"</span></td>");
-                                                        out.println("<td scope=\"row\"><span id=\"nombre_usuario"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getNombre_usuario()+"</span></td>");
-                                                        out.println("<td><span id=\"rut_usuario"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getRut_usuario()+"</span></td>");
-                                                        out.println("<td><span id=\"email_usuario"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getEmail_usuario()+"</span></td>");
-                                                        out.println("<td><span id=\"contra_usuario"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getContra_usuario()+"</span></td>");
-                                                        out.println("<td><span id=\"cargo_usuario"+listausuario.get(i).getId_usuario()+"\">"+listausuario.get(i).getCargo_usuario()+"</span></td>");
+                                                        out.println("<td scope=\"row\"><span id=\"id_equipo"+listaflota.get(i).getId_equipo()+"\">"+listaflota.get(i).getId_equipo()+"</span></td>");
+                                                        out.println("<td scope=\"row\"><span id=\"patente_equipo"+listaflota.get(i).getId_equipo()+"\">"+listaflota.get(i).getPatente_equipo()+"</span></td>");
+                                                        out.println("<td><span id=\"tipo_equipo"+listaflota.get(i).getId_equipo()+"\">"+listaflota.get(i).getTipo_equipo()+"</span></td>");
+                                                        out.println("<td><span id=\"marca_equipo"+listaflota.get(i).getId_equipo()+"\">"+listaflota.get(i).getMarca_equipo()+"</span></td>");
+                                                        out.println("<td><span id=\"modelo_equipo"+listaflota.get(i).getId_equipo()+"\">"+listaflota.get(i).getModelo_equipo()+"</span></td>");
+                                                        out.println("<td><span id=\"nro_motor_equipo"+listaflota.get(i).getId_equipo()+"\">"+listaflota.get(i).getNro_motor_equipo()+"</span></td>");
+                                                        out.println("<td><span id=\"nro_chasis_equipo"+listaflota.get(i).getId_equipo()+"\">"+listaflota.get(i).getNro_chasis_equipo()+"</span></td>");
+                                                        out.println("<td><span id=\"anho_equipo"+listaflota.get(i).getId_equipo()+"\">"+listaflota.get(i).getAnho_equipo()+"</span></td>");
+                                                        out.println("<td><span id=\"tipo_estanque_equipo"+listaflota.get(i).getId_equipo()+"\">"+listaflota.get(i).getTipo_estanque_equipo()+"</span></td>");
+                                                        out.println("<td><span id=\"estado_equipo"+listaflota.get(i).getId_equipo()+"\">"+listaflota.get(i).getEstado_equipo()+"</span></td>");
                                                         out.println("<td>"
                                                         + "<div class=\"btn-group\" role=\"group\" aria-label=\"Basic example\">"
-                                                        + "<button  data-id="+listausuario.get(i).getId_usuario()+ " type=\"button\" class=\"btn btn-info sombra-acciones btn-sm fas fa-edit editbtn\"> Editar</button>"
-                                                        + "<button data-id="+listausuario.get(i).getId_usuario()+ " type=\"button\"  class=\"btn btn-danger sombra-acciones btn-sm fas fa-trash delbtn\" data-toggle=\"modal\" >Eliminar</button>"
+                                                        + "<button  data-id="+listaflota.get(i).getId_equipo()+ " type=\"button\" class=\"btn btn-info sombra-acciones btn-sm fas fa-edit editbtn\"> Editar</button>"
+                                                        + "<button data-id="+listaflota.get(i).getId_equipo()+ " type=\"button\"  class=\"btn btn-danger sombra-acciones btn-sm fas fa-trash delbtn\" data-toggle=\"modal\" >Eliminar</button>"
                                                         + "</div>"
                                                         + ""
                                                         +"</td>");

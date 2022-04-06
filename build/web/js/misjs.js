@@ -68,6 +68,38 @@ $(document).ready(function(){
 
 
 //Clientes
+//Verificar cambios realizados en clientes
+$(document).ready(function(){
+	$("#input_nombre_edit").keyup(function(){
+            //$('#ValNombreEdit').text('Con Cambios');
+            $('#ValNombreEdit').css({'color':'rgb(218, 174, 0)'});
+	});
+        $("#input_rut_edit").keyup(function(){
+            //$('#ValRutEdit').text('Con Cambios');
+            $('#ValRutEdit').css({'color':'rgb(218, 174, 0)'});
+	});
+        $("#input_contacto_edit").keyup(function(){
+            //$('#ValEmailEdit').text('Con Cambios');
+            $('#ValContactoEdit').css({'color':'rgb(218, 174, 0)'});
+	});
+        $("#input_celular_edit").keyup(function(){
+            //$('#ValCargoEdit').text('Con Cambios');
+            $('#ValCelularEdit').css({'color':'rgb(218, 174, 0)'});
+	});
+        $("#input_correo_edit").keyup(function(){
+            //$('#ValContraEdit').text('Con Cambios');
+            $('#ValCorreoEdit').css({'color':'rgb(218, 174, 0)'});
+	});
+        $("#input_dias_edit").keyup(function(){
+            //$('#ValContraEdit').text('Con Cambios');
+            $('#ValDiasEdit').css({'color':'rgb(218, 174, 0)'});
+	});
+        $("#input_estado_edit").keyup(function(){
+            //$('#ValContraEdit').text('Con Cambios');
+            $('#ValEstadoEdit').css({'color':'rgb(218, 174, 0)'});
+	});
+});
+//
 //Eliminar Cliente
 $(document).ready(function(){
 $(document).on('click', '.delbtncliente', function(){

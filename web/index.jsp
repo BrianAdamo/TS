@@ -410,6 +410,10 @@
                                          <%@ include file="vistas/tramos/edittramo.jsp" %>
                                      <%
                                          break;
+                                         case "flota":
+                                    %>
+                                         <%@ include file="vistas/flota/flota.jsp" %>
+                                     <%
                                         }
 
                                     }

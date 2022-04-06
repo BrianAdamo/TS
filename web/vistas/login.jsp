@@ -45,6 +45,11 @@
                           <!--<img src="assets/images/avatars/1.jpg" id="icon" alt="User Icon" /> -->
                           <br>
                         </div>
+                        <!-- Espacio en Blanco -->
+                        <div class="fadeIn third">
+                          <!--<img src="assets/images/avatars/1.jpg" id="icon" alt="User Icon" /> -->
+                          <br>
+                        </div>
                     
                         <div class="col-md-12 mb-12">
                             <button type="submit" class="fadeIn fourth btn btn-info">Iniciar Sesión</button>
@@ -53,8 +58,9 @@
                         <!-- Espacio en Blanco -->
                         <div class="fadeIn fourth">
                           <!--<img src="assets/images/avatars/1.jpg" id="icon" alt="User Icon" /> -->
-                          <br>
+                          <br> <br>
                         </div>
+                        
                         
                     </div>
                     

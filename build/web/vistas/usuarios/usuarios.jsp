@@ -51,7 +51,7 @@
                         </div>            
                         <!-- INICIO CONTENIDO -->
                             <div > 
-                                <div class="col">
+                                <div class="col" hidden="">
                                  <input type="text" name="idedit" id="idedit">
                                  <input type="text" name="nombreedit" id="nombreedit">   
                                  <input type="text" name="rutedit" id="rutedit">   

@@ -14,7 +14,7 @@
                     <div class="app-main__inner">
                         <div class="app-page-title">
                             <div class="page-title-wrapper">
-                        <!-- INICIO HEADER --> 
+                        <!-- INICIO HEADER TEST--> 
                                 <div class="page-title-heading">
                                     <div class="page-title-icon">
                                         <i class="pe-7s-users icon-gradient bg-mean-fruit">
@@ -42,49 +42,49 @@
                                             <label for="validationCustom01">Id:</label>
                                             <input type="text" class="form-control" id="input_id_edit" name="input_id_edit" placeholder="Id Cliente" value="<%=idcli%>" readonly>
                                             <div class="invalid-feedback">
-                                                ¡Campo Vacio!
+                                                ï¿½Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom01">Nombre Cliente:</label> <a id="ValNombreEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
                                             <input type="text" class="form-control" id="input_nombre_edit" name="input_nombre_edit" placeholder="Nombre Cliente" value="<%=nombrecli%>" required maxlength="50">
                                             <div class="invalid-feedback">
-                                                ¡Campo Vacio!
+                                                ï¿½Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom02">Rut: </label> <a id="ValRutEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
                                             <input type="text" class="form-control" id="input_rut_edit" name="input_rut_edit" placeholder="Rut Cliente" value="<%=rutcli%>" onchange="formateaRutClienteEdit(this.value)" required maxlength="15">
                                             <div class="invalid-feedback">
-                                                ¡Campo Vacio!
+                                                ï¿½Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom02">Nombre de contacto: </label> <a id="ValContactoEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
                                             <input type="text" class="form-control" id="input_contacto_edit" name="input_contacto_edit" placeholder="Nombre Contacto"  value="<%=contactocli%>" maxlength="100">
                                             <div class="invalid-feedback">
-                                                ¡Campo Vacio!
+                                                ï¿½Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom02">Celular contacto: </label> <a id="ValCelularEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
                                             <input type="text" class="form-control" id="input_celular_edit" name="input_celular_edit" placeholder="Celular Contacto"  value="<%=celularcli%>" maxlength="50">
                                             <div class="invalid-feedback">
-                                                ¡Campo Vacio!
+                                                ï¿½Campo Vacio!
                                             </div>
                                         </div>
                                             <div class="col-md-4 mb-3">
                                             <label for="validationCustom02">Correo de contacto: </label> <a id="ValCorreoEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
                                             <input type="text" class="form-control" id="input_correo_edit" name="input_correo_edit" placeholder="Correo Contacto"  value="<%=correocli%>" maxlength="100">
                                             <div class="invalid-feedback">
-                                                ¡Campo Vacio!
+                                                ï¿½Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="validationCustom01">Dias de pago:</label> <a id="ValDiasEdit" class="fas fa-eye" style="color: #2b935e;" data-toggle="tooltip" data-placement="top" title="Indicador de cambios"></a>
                                             <input type="text" class="form-control" id="input_dias_edit" name="input_dias_edit" placeholder="Dias de pago" value="<%=diascli%>" maxlength="5">
                                             <div class="invalid-feedback">
-                                                ¡Campo Vacio!
+                                                ï¿½Campo Vacio!
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
@@ -104,7 +104,7 @@
                                                 %>
                                             </select>
                                             <div class="invalid-feedback">
-                                                ¡Campo Vacio!
+                                                ï¿½Campo Vacio!
                                             </div>
                                         </div>
                                     </div>

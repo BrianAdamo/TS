@@ -14,7 +14,7 @@
                     <div class="app-main__inner">
                         <div class="app-page-title">
                             <div class="page-title-wrapper">
-                        <!-- INICIO HEADER TEST--> 
+                        <!-- INICIO HEADER TEST 2--> 
                                 <div class="page-title-heading">
                                     <div class="page-title-icon">
                                         <i class="pe-7s-users icon-gradient bg-mean-fruit">
